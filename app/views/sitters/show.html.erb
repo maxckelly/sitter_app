@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @sitter.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @sitter.description %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @sitter.email %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @sitter.age %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @sitter.location %>
+</p>
+
+<%= link_to 'Edit', edit_sitter_path(@sitter) %> |
+<%= link_to 'Back', sitters_path %>

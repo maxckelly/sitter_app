@@ -1,26 +1,27 @@
 class ParentsController < ApplicationController
   
   before_action :authenticate_user!
-  before_action :set_parents, only: [ :show ]
+  before_action :set_parent, only: [ :show ]
   before_action :set_user_parent, only: [:show, :edit, :update, :destroy]
 
   # GET /parents
   # GET /parents.json
   def index
-    @parents = Parent.all
+
+    @parents = current_user.parents
+
   end
 
   # GET /parents/1
   # GET /parents/1.json
   def show
+
   end
 
   # GET /parents/new
   def new
-    
-    @parent = current_user.parents.new(parent_params)
+
     @parent = Parent.new
-    
   end
 
   # GET /parents/1/edit
@@ -30,16 +31,14 @@ class ParentsController < ApplicationController
   # POST /parents
   # POST /parents.json
   def create
-    @parent = Parent.new(parent_params)
 
-    respond_to do |format|
-      if @parent.save
-        format.html { redirect_to @parent, notice: 'Parent was successfully created.' }
-        format.json { render :show, status: :created, location: @parent }
-      else
-        format.html { render :new }
-        format.json { render json: @parent.errors, status: :unprocessable_entity }
-      end
+    @parent = Parent.new(parent_params)
+    @parent = current_user.parents.new(parent_params)
+
+    if @parent.save
+      redirect_to @parent
+    else 
+      render :new
     end
   end
 
@@ -70,9 +69,10 @@ class ParentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_parent
+      id = params[:id]
       @parent = Parent.find(params[:id])
 
-      @parent = current_user.parent.find_by_id(id)
+      @parent = current_user.parents.find_by_id(id)
     end
 
     def set_user_parent

@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Parents</h1>
+<% @parents.each do |parent| %>
+
+  <h1> Hi, <%= parent.mother_name %> and <%= parent.father_name %></h1>
+
+<% end %>
 
 <table>
   <thead>
@@ -17,6 +21,7 @@
   <%= calendar start_date_param: :my_date do |date| %>
     <%= date %>
   <% end %>
+  <!-- 
   <tbody>
     <% @parents.each do |parent| %>
       <tr>
@@ -31,7 +36,9 @@
       </tr>
     <% end %>
   </tbody>
+  -->
 </table>
+
 
 <br>
 

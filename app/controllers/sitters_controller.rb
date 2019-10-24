@@ -1,5 +1,7 @@
 class SittersController < ApplicationController
-  before_action :set_sitter, only: [:show, :edit, :update, :destroy]
+
+  before_action :set_sitter, only: [ :show ]
+  before_action :set_sitter, only: [ :show, :edit, :update, :destroy]
 
   # GET /sitters
   # GET /sitters.json
@@ -25,15 +27,12 @@ class SittersController < ApplicationController
   # POST /sitters.json
   def create
     @sitter = Sitter.new(sitter_params)
+    @sitter = current_user.sitters.new(sitter_params)
 
-    respond_to do |format|
-      if @sitter.save
-        format.html { redirect_to @sitter, notice: 'Sitter was successfully created.' }
-        format.json { render :show, status: :created, location: @sitter }
-      else
-        format.html { render :new }
-        format.json { render json: @sitter.errors, status: :unprocessable_entity }
-      end
+    if @sitter.save
+      redirect_to @sitter
+    else 
+      render :new
     end
   end
 
@@ -64,9 +63,16 @@ class SittersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_sitter
+      
+      id = params[:id]
       @sitter = Sitter.find(params[:id])
 
-      @sitter = current_user.sitter.find_by_id(id)
+      @sitter = current_user.sitters.find_by_id(id)
+    end
+
+    def set_user_parent
+      id = params[:id]
+      @sitter = current_user.sitters.find_by_id(id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

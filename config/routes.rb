@@ -17,4 +17,10 @@ Rails.application.routes.draw do
   patch "/parents/:id", to: "parents#update"
   delete "/parents/:id", to: "parents#destroy"
   get "/parents/:id/edit", to: "parents#edit", as: "edit_parent"
+
+  # Sitters Routes
+  get "/sitters", to: "sitters#index", as: "sitters_home"
+  post "/sitters", to: "sitters#create"
+  get "/sitters/new", to: "sitters#new", as: "sitters_new"
+  get "/sitters/:id", to: "sitters#show", as: "sitter"
 end

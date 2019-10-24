@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :meetings
   # Devise routes. The controller basically says to refer to the registrations controller.
   devise_for :users, controllers: { registrations: "registrations" }
 

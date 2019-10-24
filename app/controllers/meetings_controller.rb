@@ -1,5 +1,6 @@
 class MeetingsController < ApplicationController
   before_action :set_meeting, only: [:show, :edit, :update, :destroy]
+  before_action :set_user_meeting, only: [:new, :create, :edit, :update, :destory ]
 
   # GET /meetings
   # GET /meetings.json
@@ -24,6 +25,7 @@ class MeetingsController < ApplicationController
   # POST /meetings
   # POST /meetings.json
   def create
+
     @meeting = Meeting.new(meeting_params)
 
     respond_to do |format|
@@ -67,6 +69,10 @@ class MeetingsController < ApplicationController
       @meeting = Meeting.find(params[:id])
     end
 
+    def set_user_meeting
+      id = params[:id]
+      @user = current_user.meetings.find_by_id(id)
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def meeting_params
       params.require(:meeting).permit(:name, :start_time, :end_time)

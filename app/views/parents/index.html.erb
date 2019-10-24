@@ -6,6 +6,17 @@
 
 <% end %>
 
-<button><%= link_to new_meeting_path() %></button>
+<% if @meetings.empty? %>
+  <h1> No meetings </h1>
+
+<% else %>
+  <div id="requests">
+    <%= month_calendar events: @requests do |date, requests| %>
+      <%= date.to_formatted_s(:short) %>
+    <% end %>
+  </div>
+<% end %>
+
+<button><%= link_to "create meeting", new_meeting_path() %></button>
 
 

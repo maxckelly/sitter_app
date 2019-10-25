@@ -50,10 +50,6 @@ class SittersController < ApplicationController
       end
     end
   end
-  
-  def auth_view
-
-  end
 
   # DELETE /sitters/1
   # DELETE /sitters/1.json

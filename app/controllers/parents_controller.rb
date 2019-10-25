@@ -9,7 +9,8 @@ class ParentsController < ApplicationController
   def index
 
     @parents = current_user.parents
-
+    @meetings = current_user.meetings
+    
   end
 
   # GET /parents/1

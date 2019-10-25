@@ -89,6 +89,12 @@ ActiveRecord::Schema.define(version: 2019_10_24_092240) do
     t.index ["user_id"], name: "index_parents_on_user_id"
   end
 
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "sitters", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -111,8 +117,10 @@ ActiveRecord::Schema.define(version: 2019_10_24_092240) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.bigint "role_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["role_id"], name: "index_users_on_role_id"
   end
 
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
@@ -120,4 +128,5 @@ ActiveRecord::Schema.define(version: 2019_10_24_092240) do
   add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"
   add_foreign_key "parents", "users"
   add_foreign_key "sitters", "users"
+  add_foreign_key "users", "roles"
 end

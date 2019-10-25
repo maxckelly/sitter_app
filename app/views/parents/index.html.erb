@@ -6,39 +6,27 @@
 
 <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Mother name</th>
-      <th>Father name</th>
-      <th>Children</th>
-      <th>Description</th>
-      <th>Location</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<% if @meetings.empty? %>
+  <h1> No meetings </h1>
 
-  <%= calendar start_date_param: :my_date do |date| %>
-    <%= date %>
-  <% end %>
-  <!-- 
-  <tbody>
-    <% @parents.each do |parent| %>
-      <tr>
-        <td><%= parent.mother_name %></td>
-        <td><%= parent.father_name %></td>
-        <td><%= parent.children %></td>
-        <td><%= parent.description %></td>
-        <td><%= parent.location %></td>
-        <td><%= link_to 'Show', parent %></td>
-        <td><%= link_to 'Edit', edit_parent_path(parent) %></td>
-        <td><%= link_to 'Destroy', parent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<% else %>
+  <div id="requests">
+    <%= month_calendar events: @requests do |date, requests| %>
+      <%= date.to_formatted_s(:short) %>
     <% end %>
-  </tbody>
-  -->
-</table>
+  </div>
+<% end %>
 
+<%= month_calendar events: @meetings do |date, meetings| %>
+  <%= date %>
 
-<br>
+  <% meetings.each do |meeting| %>
+    <div>
+      <%= meeting.name %>
+    </div>
+  <% end %>
+<% end %>
+
+<button><%= link_to "create meeting", new_meeting_path() %></button>
+
 

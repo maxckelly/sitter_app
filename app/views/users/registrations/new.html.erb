@@ -21,9 +21,15 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <div class="field">
+    <%= f.label :role_id %><br />
+    <%= f.select :role_id, options_for_select( Role.all.collect { |u| [u.name, u.id] }) %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
 
 <%= render "users/shared/links" %>
+

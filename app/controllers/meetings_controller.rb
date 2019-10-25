@@ -25,7 +25,6 @@ class MeetingsController < ApplicationController
   # POST /meetings
   # POST /meetings.json
   def create
-
     @meeting = Meeting.new(meeting_params)
 
     respond_to do |format|

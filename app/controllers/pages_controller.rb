@@ -4,6 +4,10 @@ class PagesController < ApplicationController
   end 
 
   def user_login_stage
+    
+  end
+
+  def unauthorised
 
   end
 end

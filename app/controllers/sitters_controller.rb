@@ -66,14 +66,14 @@ class SittersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
 
+    # The below is saying If role_id = 2 (sitter) then you can view all of this controller, else  
     def set_sitter_view
       
-      if current_user.role_id == 1
+      if current_user.role_id == 2
         
       else 
-        raise
+        redirect_to unauthorised_path()
       end
     end
 

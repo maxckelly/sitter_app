@@ -17,6 +17,16 @@
   </div>
 <% end %>
 
+<%= month_calendar events: @meetings do |date, meetings| %>
+  <%= date %>
+
+  <% meetings.each do |meeting| %>
+    <div>
+      <%= meeting.name %>
+    </div>
+  <% end %>
+<% end %>
+
 <button><%= link_to "create meeting", new_meeting_path() %></button>
 
 

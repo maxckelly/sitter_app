@@ -69,6 +69,7 @@ class MeetingsController < ApplicationController
       @meeting = Meeting.find(params[:id])
     end
 
+    # Grabbing the user ID params
     def set_user_meeting
       id = params[:id]
       @user = current_user.meetings.find_by_id(id)

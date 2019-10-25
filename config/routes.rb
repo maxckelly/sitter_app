@@ -24,4 +24,5 @@ Rails.application.routes.draw do
   post "/sitters", to: "sitters#create"
   get "/sitters/new", to: "sitters#new", as: "sitters_new"
   get "/sitters/:id", to: "sitters#show", as: "sitter"
+
 end

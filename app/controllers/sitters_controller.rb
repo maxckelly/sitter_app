@@ -2,6 +2,7 @@ class SittersController < ApplicationController
 
   before_action :set_sitter, only: [ :show ]
   before_action :set_sitter, only: [ :show, :edit, :update, :destroy]
+  before_action :set_sitter_view
 
   # GET /sitters
   # GET /sitters.json
@@ -49,6 +50,10 @@ class SittersController < ApplicationController
       end
     end
   end
+  
+  def auth_view
+
+  end
 
   # DELETE /sitters/1
   # DELETE /sitters/1.json
@@ -62,11 +67,20 @@ class SittersController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
+    def set_sitter_view
+      
+      if current_user.role_id == 1
+        
+      else 
+        raise
+      end
+    end
+
     def set_sitter
       
       id = params[:id]
       @sitter = Sitter.find(params[:id])
-
       @sitter = current_user.sitters.find_by_id(id)
     end
 

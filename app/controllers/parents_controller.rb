@@ -79,7 +79,6 @@ class ParentsController < ApplicationController
     def set_user_parent
       id = params[:id]
       @parent = current_user.parents.find_by_id(id)
-
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

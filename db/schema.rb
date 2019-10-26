@@ -10,20 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_26_000042) do
+ActiveRecord::Schema.define(version: 2019_10_26_020501) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "meetings", force: :cascade do |t|
-    t.string "name"
-    t.datetime "start_date"
-    t.datetime "end_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_meetings_on_user_id"
-  end
 
   create_table "parents", force: :cascade do |t|
     t.string "mother_name"
@@ -53,6 +43,7 @@ ActiveRecord::Schema.define(version: 2019_10_26_000042) do
     t.datetime "updated_at", null: false
     t.text "social_link"
     t.bigint "user_id"
+    t.integer "sex"
     t.index ["user_id"], name: "index_sitters_on_user_id"
   end
 
@@ -71,7 +62,6 @@ ActiveRecord::Schema.define(version: 2019_10_26_000042) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
-  add_foreign_key "meetings", "users"
   add_foreign_key "parents", "users"
   add_foreign_key "sitters", "users"
   add_foreign_key "users", "roles"

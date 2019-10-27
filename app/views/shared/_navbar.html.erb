@@ -4,7 +4,13 @@
     <div class="profile-image-container">
        
     </div>
-    <%= link_to "Home", parents_home_path(), class: "navbar-link" %>
+    <% if user_signed_in? && current_user.role_id == 1 %>
+      <%= link_to "Home", parents_home_path(), class: "navbar-link" %>
+    <% elsif user_signed_in? && current_user.role_id == 2 %>
+      <%= link_to "Home", sitters_home_path(), class: "navbar-link" %>
+    <% else %>
+      <%= link_to "Home", root_path(), class: "navbar-link" %>
+    <% end %>
     <a href="./experiences" class="navbar-link"> Experiences    </a>
     <a href="./portfolio" class="navbar-link"> Portfolio </a>
     <a href="./blog" class="navbar-link"> Blog </a>

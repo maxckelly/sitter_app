@@ -24,7 +24,11 @@ Rails.application.routes.draw do
   # Sitters Routes
   get "/sitters", to: "sitters#index", as: "sitters_home"
   post "/sitters", to: "sitters#create"
-  get "/sitters/new", to: "sitters#new", as: "sitters_new"
+  get "/sitters/new", to: "sitters#new", as: "new_sitter"
   get "/sitters/:id", to: "sitters#show", as: "sitter"
-  get "/sitters/auth_view", to: "sitters#auth_view", as: "auth_view"
+  put "/sitters/:id", to: "sitters#update"
+  patch "/sitters/:id", to: "sitters#update"
+  delete "/sitters/:id", to: "sitters#destroy"
+  # get "/sitters/auth_view", to: "sitters#auth_view", as: "auth_view"
+  get "/sitters/:id/edit", to: "sitters#edit", as: "edit_sitter"
 end

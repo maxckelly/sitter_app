@@ -69,8 +69,8 @@ class ParentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-
+ 
+    # The below verifies if the current user is a parent and if so they can access all of the parents pages.
     def set_parent_view
       if current_user.role_id == 1
         

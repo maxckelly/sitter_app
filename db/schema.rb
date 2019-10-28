@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_26_000042) do
+ActiveRecord::Schema.define(version: 2019_10_27_230648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "meetings", force: :cascade do |t|
     t.string "name"
-    t.datetime "start_date"
-    t.datetime "end_date"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
@@ -46,13 +46,13 @@ ActiveRecord::Schema.define(version: 2019_10_26_000042) do
   create_table "sitters", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.text "email"
     t.date "age"
     t.text "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "social_link"
     t.bigint "user_id"
+    t.integer "sex"
     t.index ["user_id"], name: "index_sitters_on_user_id"
   end
 

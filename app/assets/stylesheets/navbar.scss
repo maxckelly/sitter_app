@@ -1,0 +1,45 @@
+.navbar {
+  padding-bottom: 0.5rem;
+}
+
+.links {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+}
+
+.profile-image-container {
+  padding: 15px;
+}
+
+.profile-image-container:hover {
+  transform: scale(1.1);
+}
+
+.profile-image {
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  background: var(--main-green);
+}
+
+.navbar-link {
+  margin-left: 1rem;
+  text-decoration: none;
+  color: var(--main-grey);
+  font-family: var(--font-family-two);
+}
+
+.navbar-link:hover {
+  color: var(--main-orange);
+}
+
+.current {
+  color: var(--main-orange);
+}
+
+.mobile-menu {
+  display: none;
+}
+

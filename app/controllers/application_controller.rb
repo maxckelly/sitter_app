@@ -2,7 +2,11 @@ class ApplicationController < ActionController::Base
 
   
   def after_sign_in_path_for(resource)
-    parents_home_path(current_user)
+    if current_user.role_id == 1
+      parents_path()
+    elsif current_user.role_id == 2
+      sitters_path()
+    end
   end
 
   # Prevent CSRF attacks by raising an exception.

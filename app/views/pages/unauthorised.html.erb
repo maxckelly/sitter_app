@@ -1,1 +1,6 @@
-<h1> You're not authorised please sign in </h1>
+<% if current_user.role_id == 1 %>
+    <h1>You're currently signed in as a parent. Please sign in as a sitter to access this page. </h1>
+  <% elsif current_user.role_id == 2 %>
+    <h1> You're currently signed in as a sitter.</h1>
+    <p> Please sign in as a parent to access this page</p>
+<% end %>

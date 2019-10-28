@@ -3,6 +3,7 @@ class ParentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_parent, only: [ :show ]
   before_action :set_user_parent, only: [:show, :edit, :update, :destroy]
+  before_action :set_parent_view
 
   # GET /parents
   # GET /parents.json
@@ -68,7 +69,16 @@ class ParentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+ 
+    # The below verifies if the current user is a parent and if so they can access all of the parents pages.
+    def set_parent_view
+      if current_user.role_id == 1
+        
+      else 
+        redirect_to unauthorised_path()
+      end
+    end
+
     def set_parent
       id = params[:id]
       @parent = Parent.find(params[:id])
@@ -79,7 +89,6 @@ class ParentsController < ApplicationController
     def set_user_parent
       id = params[:id]
       @parent = current_user.parents.find_by_id(id)
-
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

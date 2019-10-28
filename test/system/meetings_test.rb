@@ -14,9 +14,9 @@ class MeetingsTest < ApplicationSystemTestCase
     visit meetings_url
     click_on "New Meeting"
 
-    fill_in "End time", with: @meeting.end_time
+    fill_in "End time", with: @meeting.end_date
     fill_in "Name", with: @meeting.name
-    fill_in "Start time", with: @meeting.start_time
+    fill_in "Start time", with: @meeting.start_date
     click_on "Create Meeting"
 
     assert_text "Meeting was successfully created"
@@ -27,9 +27,9 @@ class MeetingsTest < ApplicationSystemTestCase
     visit meetings_url
     click_on "Edit", match: :first
 
-    fill_in "End time", with: @meeting.end_time
+    fill_in "End time", with: @meeting.end_date
     fill_in "Name", with: @meeting.name
-    fill_in "Start time", with: @meeting.start_time
+    fill_in "Start time", with: @meeting.start_date
     click_on "Update Meeting"
 
     assert_text "Meeting was successfully updated"

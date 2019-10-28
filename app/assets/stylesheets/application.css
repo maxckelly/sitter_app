@@ -13,3 +13,29 @@
  *= require_tree .
  *= require_self
  */
+
+/* Fonts */
+
+body {
+  margin: 1rem;
+}
+@import url("https://fonts.googleapis.com/css?family=Manjari:700|Roboto:700&display=swap");
+
+:root {
+  --main-orange: #EF6248;
+  --main-grey: #232323;
+  --main-green: #1F9397;
+  --main-white: white;
+  --font-family-one: 'Manjari', sans-serif;
+  --font-family-two: 'Roboto', sans-serif;
+  --font-family-three: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --box-shadow: 0 28px 16px -26px rgba(0, 0, 0);
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  font-family: var(--font-family-two);
+}

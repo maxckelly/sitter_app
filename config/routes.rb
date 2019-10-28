@@ -7,7 +7,6 @@ Rails.application.routes.draw do
 
   # Pages Routes
   get "/", to: "pages#index", as: "root"
-  get "/user_login_stage", to: "pages#user_login_stage", as: "user_login_stage"
   # This page appears when the user is trying to access a area of their site they're not allowed
   get "/unauthorised", to: "pages#unauthorised", as: "unauthorised"
 

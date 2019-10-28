@@ -1,5 +1,6 @@
 class SittersController < ApplicationController
 
+  before_action :authenticate_user!
   before_action :set_sitter, only: [ :show ]
   before_action :set_sitter, only: [ :show, :edit, :update, :destroy]
   before_action :set_sitter_view
@@ -7,7 +8,8 @@ class SittersController < ApplicationController
   # GET /sitters
   # GET /sitters.json
   def index
-    @sitters = Sitter.all
+    @sitter = current_user.sitter
+    
   end
 
   # GET /sitters/1
@@ -90,6 +92,6 @@ class SittersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sitter_params
-      params.require(:sitter).permit(:name, :description, :age, :location)
+      params.require(:sitter).permit(:name, :description, :age, :location, :picture)
     end
 end

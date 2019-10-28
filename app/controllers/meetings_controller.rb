@@ -5,6 +5,7 @@ class MeetingsController < ApplicationController
   # GET /meetings
   # GET /meetings.json
   def index
+    @parent = current_user.parent
     @meetings = Meeting.all
   end
 

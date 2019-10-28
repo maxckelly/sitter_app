@@ -1,8 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<% @parents.each do |parent| %>
-  <h1> Hi, <%= parent.mother_name %> and <%= parent.father_name %></h1>
-<% end %>
+<h1> Hi, <%= @parent.mother_name %> and <%= @parent.father_name %></h1>
 
 <% if @meetings.empty? %>
   <h1> No ngihts out planned </h1>

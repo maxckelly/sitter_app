@@ -1,8 +1,13 @@
-<!-- If User is signed in as parent they see the below. -->
 <% if user_signed_in? && current_user.role_id == 1 %>
   <nav class="navbar">
     <div class="links">
-      <div class="profile-image-container"></div>
+      <div>
+      <% if @parent.picture.attached? %>
+        <%= image_tag @parent.picture, class: "profile-image" %>
+      <% else %>
+        <%= image_tag "default_profile_image.png", class: "profile-image" %>
+      <% end %>
+      </div>
       <%= link_to "Home", parents_home_path(), class: "navbar-link" %>
       <%= link_to "All meeting", meetings_path(), class: "navbar-link" %>
       <% if user_signed_in? %>
@@ -12,7 +17,7 @@
       <% end %>
     </div>
   </nav>
-  <!-- If user is signed in as sitter they see the below -->
+
   <% elsif user_signed_in? && current_user.role_id == 2 %>
     <nav class="navbar">
       <div class="links">
@@ -26,11 +31,13 @@
         <% end %>
       </div>
     </nav>
-    <!-- If user isn't signed in they see the below -->
+
   <% else user_signed_in? %>
     <nav class="navbar">
       <div class="links">
-        <div class="profile-image-container"></div>
+        <div class="profile-image-container">
+          <%= image_tag 'default_profile_image.png', class: "profile-image"%>
+        </div>
         <%= link_to "Home", root_path(), class: "navbar-link" %>
         <% if user_signed_in? %>
           <%= link_to "logout", destroy_user_session_path, method: :delete, class: "navbar-link"%></p>
@@ -40,3 +47,4 @@
       </div>
     </nav>
 <% end %>
+

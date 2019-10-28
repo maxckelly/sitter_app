@@ -1,17 +1,15 @@
 class ParentsController < ApplicationController
   
   before_action :authenticate_user!
-  before_action :set_parent, only: [ :show ]
+  before_action :set_parent, only: [ :show]
   before_action :set_user_parent, only: [:show, :edit, :update, :destroy]
   before_action :set_parent_view
 
   # GET /parents
   # GET /parents.json
   def index
-
-    @parents = current_user.parents
+    @parent = current_user.parent
     @meetings = current_user.meetings
-    
   end
 
   # GET /parents/1
@@ -22,7 +20,6 @@ class ParentsController < ApplicationController
 
   # GET /parents/new
   def new
-
     @parent = Parent.new
   end
 
@@ -33,9 +30,11 @@ class ParentsController < ApplicationController
   # POST /parents
   # POST /parents.json
   def create
+    # The below is a way to create the sitter when its a one-to-one
 
-    @parent = Parent.new(parent_params)
-    @parent = current_user.parents.new(parent_params)
+    @user = current_user
+    @parent = Parent.create(parent_params)
+    @user.parent = @parent
 
     if @parent.save
       redirect_to @parent
@@ -72,6 +71,7 @@ class ParentsController < ApplicationController
  
     # The below verifies if the current user is a parent and if so they can access all of the parents pages.
     def set_parent_view
+
       if current_user.role_id == 1
         
       else 
@@ -81,18 +81,16 @@ class ParentsController < ApplicationController
 
     def set_parent
       id = params[:id]
-      @parent = Parent.find(params[:id])
-
-      @parent = current_user.parents.find_by_id(id)
+      # The below is a way to find the parent when its a one-to-one
+      @parent = Parent.find_by_user_id(current_user.id)
     end
 
     def set_user_parent
       id = params[:id]
-      @parent = current_user.parents.find_by_id(id)
+      @parent = Parent.find_by_user_id(current_user.id)
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def parent_params
-      params.require(:parent).permit(:mother_name, :father_name, :children, :description, :location)
+      params.require(:parent).permit(:mother_name, :father_name, :children, :description, :location, :picture)
     end
 end

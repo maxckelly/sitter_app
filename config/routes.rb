@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
   resources :meetings
+  
   # Devise routes. The controller basically says to refer to the registrations controller.
   devise_for :users, controllers: { registrations: "registrations" }
-
 
   # Pages Routes
   get "/", to: "pages#index", as: "root"
@@ -28,6 +28,5 @@ Rails.application.routes.draw do
   put "/sitters/:id", to: "sitters#update"
   patch "/sitters/:id", to: "sitters#update"
   delete "/sitters/:id", to: "sitters#destroy"
-  # get "/sitters/auth_view", to: "sitters#auth_view", as: "auth_view"
   get "/sitters/:id/edit", to: "sitters#edit", as: "edit_sitter"
 end

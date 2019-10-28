@@ -11,6 +11,11 @@
     </div>
   <% end %>
 
+  <div>
+    <%= form.label :picture%>
+    <%= form.file_field :picture, accept: "image/png,image/gif,image/jpg,image/jpeg"%>
+  </div>
+
   <div class="field">
     <%= form.label :mother_name %>
     <%= form.text_field :mother_name %>

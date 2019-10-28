@@ -26,9 +26,12 @@ class SittersController < ApplicationController
 
   # POST /sitters
   # POST /sitters.json
+  
   def create
-    @sitter = Sitter.new(sitter_params)
-    @sitter = current_user.sitters.new(sitter_params)
+    # The below is a way to create the sitter when its a one-to-one
+    @user = current_user
+    @sitter = Sitter.create(sitter_params)
+    @user.sitter = @sitter
 
     if @sitter.save
       redirect_to @sitter
@@ -76,13 +79,13 @@ class SittersController < ApplicationController
     def set_sitter
       
       id = params[:id]
-      @sitter = Sitter.find(params[:id])
-      @sitter = current_user.sitters.find_by_id(id)
+      # The below is a way to find the sitter when its a one-to-one
+      @sitter = Sitter.find_by_user_id(current_user.id)
     end
 
     def set_user_parent
       id = params[:id]
-      @sitter = current_user.sitters.find_by_id(id)
+      @sitter = current_user.sitter.find_by_id(id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,2 +1,22 @@
-<h1> Home page</h1>
+<h1> Welcome to Sitter </h1>
+<p> Quickly find and connect with babysitters in your area.</p>
+
+<h1> Sitters around you </h1>
+
+<div class="card-row">
+  <% @sitters.each do |sitter| %>
+    <div class="card" style="width: 18rem;">
+      <% if sitter.picture.attached? %>
+        <%= image_tag sitter.picture, class: "card-img-top", alt: "This is the image card" %>
+      <% else %>
+        <%= image_tag "default_profile_image.png", class: "card-img-top" %>
+      <% end %>
+      <div class="card-body">
+        <h5 class="card-title"><%= sitter.name %></h5>
+        <p class="card-text"><%= sitter.description %></p>
+        <%= link_to "View profile", sitter_path(sitter), class:"btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>
 

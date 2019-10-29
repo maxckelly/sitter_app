@@ -1,6 +1,6 @@
 class MeetingsController < ApplicationController
   before_action :set_meeting, only: [:show, :edit, :update, :destroy]
-  before_action :set_user_meeting, only: [:new, :create, :edit, :update, :destory ]
+  before_action :set_user_meeting, only: [:new, :create, :edit, :update, :destory, :show ]
 
   # GET /meetings
   # GET /meetings.json
@@ -73,7 +73,7 @@ class MeetingsController < ApplicationController
     # Grabbing the user ID params
     def set_user_meeting
       id = params[:id]
-      @user = current_user.meetings.find_by_id(id)
+      @parent = current_user.meetings.find_by_id(id)
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def meeting_params

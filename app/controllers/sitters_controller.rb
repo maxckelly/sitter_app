@@ -85,12 +85,11 @@ class SittersController < ApplicationController
       @sitter = Sitter.find_by_user_id(current_user.id)
     end
 
-    def set_user_parent
+    def set_user_sitter
       id = params[:id]
       @sitter = current_user.sitter.find_by_id(id)
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def sitter_params
       params.require(:sitter).permit(:name, :description, :age, :location, :picture)
     end

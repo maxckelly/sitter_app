@@ -1,0 +1,12 @@
+.card-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+}
+.card {
+  margin: 1rem;
+}
+
+.card-img-top {
+  border-bottom: 1px solid grey;
+}

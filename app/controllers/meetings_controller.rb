@@ -7,6 +7,7 @@ class MeetingsController < ApplicationController
   # GET /meetings.json
   def index
     @parent = current_user.parent
+    @sitter = current_user.sitter
     @meetings = current_user.meetings
   end
 
@@ -76,6 +77,7 @@ class MeetingsController < ApplicationController
     def set_user_meeting
       id = params[:id]
       @parent = Parent.find_by_user_id(current_user.id)
+      @sitter = Sitter.find_by_user_id(current_user.id)
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def meeting_params

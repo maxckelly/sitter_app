@@ -1,5 +1,6 @@
 class MeetingsController < ApplicationController
 
+  before_action :set_meeting_view
   before_action :set_meeting, only: [:show, :edit, :update, :destroy]
   before_action :set_user_meeting, only: [:new, :create, :edit, :update, :destory, :show ]
 
@@ -68,6 +69,16 @@ class MeetingsController < ApplicationController
   end
 
   private
+
+    def set_meeting_view
+
+      if user_signed_in?
+        
+      else 
+        redirect_to new_user_session_path()
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_meeting
       @meeting = Meeting.find(params[:id])

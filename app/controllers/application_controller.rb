@@ -2,9 +2,9 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if current_user.role_id == 1
-      parents_path()
+      parents_home_path()
     elsif current_user.role_id == 2
-      sitters_path()
+      sitters_home_path()
     end
   end
 

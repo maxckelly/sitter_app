@@ -71,6 +71,10 @@ class ParentsController < ApplicationController
     end
   end
 
+  def sitter_display
+    @sitters = Sitter.all
+  end
+
   private
  
     # The below verifies if the current user is a parent and if so they can access all of the parents pages.

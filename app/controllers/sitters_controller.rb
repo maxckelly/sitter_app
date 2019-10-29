@@ -31,14 +31,17 @@ class SittersController < ApplicationController
   
   def create
     # The below is a way to create the sitter when its a one-to-one
-    @user = current_user
-    @sitter = Sitter.create(sitter_params)
-    @user.sitter = @sitter
-
-    if @sitter.save
-      redirect_to @sitter
-    else 
-      render :new
+    @sitter = Sitter.new(sitter_params)
+    @sitter.user = current_user
+    
+    respond_to do |format|
+      if @sitter.save
+        format.html { redirect_to @sitter, notice: 'Racquet was successfully created.' }
+        format.json { render :show, status: :created, location: @sitter }
+      else
+        format.html { render :new }
+        format.json { render json: @sitter.errors, status: :unprocessable_entity }
+      end
     end
   end
 

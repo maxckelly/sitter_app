@@ -32,14 +32,18 @@ class ParentsController < ApplicationController
   def create
     # The below is a way to create the sitter when its a one-to-one
 
-    @user = current_user
-    @parent = Parent.create(parent_params)
-    @user.parent = @parent
+    @parent = Parent.new(parent_params)
+    @parent.user = current_user
+    
+    respond_to do |format|
 
-    if @parent.save
-      redirect_to @parent
-    else 
-      render :new
+      if @parent.save
+        format.html { redirect_to @parent, notice: 'Racquet was successfully created.' }
+        format.json { render :show, status: :created, location: @parent }
+      else
+        format.html { render :new }
+        format.json { render json: @parent.errors, status: :unprocessable_entity }
+      end
     end
   end
 

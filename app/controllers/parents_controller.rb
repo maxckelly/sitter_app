@@ -72,6 +72,8 @@ class ParentsController < ApplicationController
   end
 
   def sitter_display
+    # The @parent below is to grab the current user parent image for the Navbar
+    @parent = current_user.parent
     @sitters = Sitter.all
   end
 

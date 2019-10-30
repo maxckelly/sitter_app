@@ -1,15 +1,26 @@
+
 <% if user_signed_in? && current_user.role_id == 1 %>
   <nav class="navbar">
     <div class="links">
       <div>
-      <% if @parent.picture.attached? %>
+      <% if  @parent.picture != nil && @parent.picture.attached? %>
         <%= image_tag @parent.picture, class: "profile-image" %>
-      <% else %>
+      <% elsif %>
         <%= image_tag "default_profile_image.png", class: "profile-image" %>
       <% end %>
       </div>
+      <!-- Links -->
       <%= link_to "Home", parents_home_path(), class: "navbar-link" %>
       <%= link_to "All bookings", meetings_path(), class: "navbar-link" %>
+      <%= link_to "View Sitters", sitter_display_path(), class: "navbar-link" %>
+
+      <!-- The below if statement basically says if the parent id is nil then display nothing. But if its not nil display view profile. This was to prevent the app from crashing when creating the parent. -->
+      <% if @parent.id == nil %>
+        
+      <% elsif %>
+        <%= link_to "View profile", parent_path(@parent), class: "navbar-link" %>
+      <% end %>
+
       <% if user_signed_in? %>
         <%= link_to "logout", destroy_user_session_path, method: :delete, class: "navbar-link"%></p>
       <% else %>
@@ -17,7 +28,6 @@
       <% end %>
     </div>
   </nav>
-
   <% elsif user_signed_in? && current_user.role_id == 2 %>
     <nav class="navbar">
       <div class="links">
@@ -30,6 +40,13 @@
         </div>
         <%= link_to "Home", sitters_home_path(), class: "navbar-link" %>
         <%= link_to "All bookings", meetings_path(), class: "navbar-link" %>
+        
+        <% if @sitter.id == nil %>
+        
+        <% elsif %>
+          <%= link_to "View profile", sitter_path(@sitter), class: "navbar-link" %>
+        <% end %>
+
         <% if user_signed_in? %>
           <%= link_to "logout", destroy_user_session_path, method: :delete, class: "navbar-link"%></p>
         <% else %>
@@ -37,7 +54,6 @@
         <% end %>
       </div>
     </nav>
-
   <% elsif !user_signed_in? %>
     <nav class="navbar">
       <div class="links">
@@ -53,4 +69,5 @@
       </div>
     </nav>
 <% end %>
+
 

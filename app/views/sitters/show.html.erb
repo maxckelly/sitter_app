@@ -1,6 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-
 <div class="view-profile-image">
   <% if @sitter.picture.attached? %>
     <%= image_tag @sitter.picture, class: "view-profile-image" %>
@@ -29,5 +28,8 @@
   <%= @sitter.location %>
 </p>
 
-<%= link_to "Back", sitters_path() %>
-<%= link_to "Edit", edit_sitter_path()%>
+<% if user_signed_in? && current_user.role_id == 2 %>
+  <%= link_to "Back", sitters_path() %>
+  <%= link_to "Edit", edit_sitter_path()%>
+<% end %>
+

@@ -1,20 +1,23 @@
 class SittersController < ApplicationController
 
-  before_action :authenticate_user!
-  before_action :set_sitter, only: [ :show ]
+  before_action :authenticate_user!, only: [ :index, :new, :create, :edit, :update, :destroy]
   before_action :set_sitter, only: [ :show, :edit, :update, :destroy]
-  before_action :set_sitter_view
+  before_action :set_sitter_view, only: [ :index, :new, :create, :edit, :update, :destroy]
 
   # GET /sitters
   # GET /sitters.json
   def index
     @sitter = current_user.sitter
-    
   end
 
   # GET /sitters/1
   # GET /sitters/1.json
   def show
+    if !user_signed_in? 
+
+    elsif current_user.role_id == 1
+      @parent = current_user.parent
+    end
   end
 
   # GET /sitters/new
@@ -73,7 +76,6 @@ class SittersController < ApplicationController
 
     # The below is saying If role_id = 2 (sitter) then you can view all of this controller, else  
     def set_sitter_view
-      
       if current_user.role_id == 2
         
       else 
@@ -82,10 +84,9 @@ class SittersController < ApplicationController
     end
 
     def set_sitter
-      
       id = params[:id]
       # The below is a way to find the sitter when its a one-to-one
-      @sitter = Sitter.find_by_user_id(current_user.id)
+      @sitter = Sitter.find(id)
     end
 
     def set_user_sitter

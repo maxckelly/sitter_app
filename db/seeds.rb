@@ -19,24 +19,36 @@ Role.create!(
   name: "sitter"
 )
 
-for i in 1..10
+for i in 1..20
   User.create!(
     email: Faker::Internet.email,
     password: "12345678",
     role_id: 2,
   )
-  puts "Created #{i} user"
+  puts "Created #{i} users"
 end
 
 
-# for i in 1..10
-#   Sitter.create(
-#     name: Faker::Name.name,
-#     description: Faker::Quote.famous_last_words,
-#     age: Faker::Date.between(from: 200.days.ago, to: Date.today),
-#     location: Faker::Address.city,
-#     user_id: 1
-#   )
-#   puts "Created #{i} sitters"
-# end
+for i in 1..10
+  Sitter.create!(
+    name: Faker::Name.name,
+    description: Faker::Quote.famous_last_words,
+    age: Faker::Date.between(from: 200.days.ago, to: Date.today),
+    location: Faker::Address.city,
+    user_id: rand(1..10)
+  )
+  puts "Created #{i} sitters"
+end
+
+for i in 1..10
+  Parent.create!(
+    mother_name: Faker::Name.name,
+    father_name: Faker::Name.name,
+    children: rand(5),
+    description: Faker::Quote.famous_last_words,
+    location: Faker::Address.city,
+    user_id: rand(10..20)
+  )
+  puts "Created #{i} parents"
+end
 

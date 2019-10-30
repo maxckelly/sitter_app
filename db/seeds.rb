@@ -20,7 +20,7 @@ for i in 1..20
   User.create!(
     email: Faker::Internet.email,
     password: "12345678",
-    role_id: 2,
+    role_id: rand(1..2),
   )
   puts "Created #{i} users"
 end
@@ -47,5 +47,17 @@ for i in 1..10
     user_id: rand(10..20)
   )
   puts "Created #{i} parents"
+end
+
+for i in 1..10
+  Meeting.create!(
+    name: Faker::Name.name,
+    start_time: Faker::Date.forward(days: 23),
+    end_time: Faker::Date.forward(days: 24),
+    user_id: rand(10..20),
+    parent_user_id: rand(10..20),
+    sitter_user_id: rand(1..10)
+  )
+  puts "Created #{i} meetings"
 end
 

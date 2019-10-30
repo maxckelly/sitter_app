@@ -1,11 +1,15 @@
 class MeetingsController < ApplicationController
+
+  before_action :set_meeting_view
   before_action :set_meeting, only: [:show, :edit, :update, :destroy]
-  before_action :set_user_meeting, only: [:new, :create, :edit, :update, :destory ]
+  before_action :set_user_meeting, only: [:new, :create, :edit, :update, :destory, :show ]
 
   # GET /meetings
   # GET /meetings.json
   def index
-    @meetings = Meeting.all
+    @parent = current_user.parent
+    @sitter = current_user.sitter
+    @meetings = current_user.meetings
   end
 
   # GET /meetings/1
@@ -25,6 +29,7 @@ class MeetingsController < ApplicationController
   # POST /meetings
   # POST /meetings.json
   def create
+
     @meeting = Meeting.new(meeting_params)
     @meeting = current_user.meetings.new(meeting_params)
 
@@ -64,6 +69,16 @@ class MeetingsController < ApplicationController
   end
 
   private
+
+    def set_meeting_view
+
+      if user_signed_in?
+        
+      else 
+        redirect_to new_user_session_path()
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_meeting
       @meeting = Meeting.find(params[:id])
@@ -72,7 +87,8 @@ class MeetingsController < ApplicationController
     # Grabbing the user ID params
     def set_user_meeting
       id = params[:id]
-      @user = current_user.meetings.find_by_id(id)
+      @parent = Parent.find_by_user_id(current_user.id)
+      @sitter = Sitter.find_by_user_id(current_user.id)
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def meeting_params

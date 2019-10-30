@@ -1,33 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Sitters</h1>
+<h1> Hi, <%= @sitter.name %> </h1>
+<p> Here are the jobs you have coming up </p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Age</th>
-      <th>Location</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @sitters.each do |sitter| %>
-      <tr>
-        <td><%= sitter.name %></td>
-        <td><%= sitter.description %></td>
-        <td><%= sitter.age %></td>
-        <td><%= sitter.location %></td>
-        <td><%= link_to 'Show', sitter %></td>
-        <td><%= link_to 'Edit', edit_sitter_path(sitter) %></td>
-        <td><%= link_to 'Destroy', sitter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Sitter', new_sitter_path() %>

@@ -1,5 +1,13 @@
 <p id="notice"><%= notice %></p>
 
+<div class="view-profile-image">
+  <% if @sitter.picture.attached? %>
+    <%= image_tag @sitter.picture, class: "view-profile-image" %>
+  <% else %>
+    <%= image_tag "default_profile_image.png", class: "view-profile-image" %>
+  <% end %>
+</div>
+
 <p>
   <strong>Name:</strong>
   <%= @sitter.name %>
@@ -8,11 +16,6 @@
 <p>
   <strong>Description:</strong>
   <%= @sitter.description %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @sitter.email %>
 </p>
 
 <p>
@@ -25,4 +28,8 @@
   <%= @sitter.location %>
 </p>
 
-<%= link_to 'Back', sitters_path %>
+<% if user_signed_in? && current_user.role_id == 2 %>
+  <%= link_to "Back", sitters_path() %>
+  <%= link_to "Edit", edit_sitter_path()%>
+<% end %>
+

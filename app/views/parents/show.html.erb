@@ -1,5 +1,13 @@
 <p id="notice"><%= notice %></p>
 
+<div class="view-profile-image">
+  <% if @parent.picture.attached? %>
+    <%= image_tag @parent.picture, class: "view-profile-image" %>
+  <% else %>
+    <%= image_tag "default_profile_image.png", class: "view-profile-image" %>
+  <% end %>
+</div>
+
 <p>
   <strong>Mother name:</strong>
   <%= @parent.mother_name %>

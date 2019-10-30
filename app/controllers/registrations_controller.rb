@@ -6,7 +6,7 @@ class RegistrationsController < Devise::RegistrationsController
     if current_user.role_id == 1 
       parents_new_path()
     elsif current_user.role_id == 2
-      sitters_new_path()
+      new_sitter_path()
     end
   end  
 end

@@ -1,18 +1,23 @@
 class SittersController < ApplicationController
 
-  before_action :set_sitter, only: [ :show ]
+  before_action :authenticate_user!, only: [ :index, :new, :create, :edit, :update, :destroy]
   before_action :set_sitter, only: [ :show, :edit, :update, :destroy]
-  before_action :set_sitter_view
+  before_action :set_sitter_view, only: [ :index, :new, :create, :edit, :update, :destroy]
 
   # GET /sitters
   # GET /sitters.json
   def index
-    @sitters = Sitter.all
+    @sitter = current_user.sitter
   end
 
   # GET /sitters/1
   # GET /sitters/1.json
   def show
+    if !user_signed_in? 
+
+    elsif current_user.role_id == 1
+      @parent = current_user.parent
+    end
   end
 
   # GET /sitters/new
@@ -26,14 +31,20 @@ class SittersController < ApplicationController
 
   # POST /sitters
   # POST /sitters.json
+  
   def create
+    # The below is a way to create the sitter when its a one-to-one
     @sitter = Sitter.new(sitter_params)
-    @sitter = current_user.sitters.new(sitter_params)
-
-    if @sitter.save
-      redirect_to @sitter
-    else 
-      render :new
+    @sitter.user = current_user
+    
+    respond_to do |format|
+      if @sitter.save
+        format.html { redirect_to @sitter, notice: 'Racquet was successfully created.' }
+        format.json { render :show, status: :created, location: @sitter }
+      else
+        format.html { render :new }
+        format.json { render json: @sitter.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -65,7 +76,6 @@ class SittersController < ApplicationController
 
     # The below is saying If role_id = 2 (sitter) then you can view all of this controller, else  
     def set_sitter_view
-      
       if current_user.role_id == 2
         
       else 
@@ -74,19 +84,17 @@ class SittersController < ApplicationController
     end
 
     def set_sitter
-      
       id = params[:id]
-      @sitter = Sitter.find(params[:id])
-      @sitter = current_user.sitters.find_by_id(id)
+      # The below is a way to find the sitter when its a one-to-one
+      @sitter = Sitter.find(id)
     end
 
-    def set_user_parent
+    def set_user_sitter
       id = params[:id]
-      @sitter = current_user.sitters.find_by_id(id)
+      @sitter = current_user.sitter.find_by_id(id)
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def sitter_params
-      params.require(:sitter).permit(:name, :description, :age, :location)
+      params.require(:sitter).permit(:name, :description, :age, :location, :picture)
     end
 end

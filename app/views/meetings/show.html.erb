@@ -1,7 +1,7 @@
-<p id="notice"><%= notice %></p>
+<h1> Your booking </h1>
 
 <p>
-  <strong>Name:</strong>
+  <strong> Booking Name:</strong>
   <%= @meeting.name %>
 </p>
 
@@ -13,6 +13,11 @@
 <p>
   <strong>End time:</strong>
   <%= @meeting.end_time %>
+</p>
+
+<p>
+  <strong> Sitter Name: </strong>
+  <%= @sitter.name %>
 </p>
 
 <%= link_to 'Edit', edit_meeting_path(@meeting) %> |

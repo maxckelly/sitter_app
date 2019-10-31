@@ -15,13 +15,13 @@ class MeetingsController < ApplicationController
   # GET /meetings/1
   # GET /meetings/1.json
   def show
+    @sitter = Sitter.find(params[:sitter_id])
   end
 
   # GET /meetings/new
   def new
     @sitter = Sitter.find(params[:sitter_id])
     @meeting = Meeting.new
-
   end
 
   # GET /meetings/1/edit
@@ -34,10 +34,12 @@ class MeetingsController < ApplicationController
 
     @meeting = Meeting.new(meeting_params)
     @meeting = current_user.meetings.new(meeting_params)
-
+    @sitter = Sitter.find(meeting_params[:sitter_user_id])
+ 
     respond_to do |format|
       if @meeting.save
-        format.html { redirect_to @meeting, notice: 'Meeting was successfully created.' }
+        
+        format.html { redirect_to meetings_show_path(@meeting.id, @sitter.id), notice: 'Meeting was successfully created.' }
         format.json { render :show, status: :created, location: @meeting }
       else
         format.html { render :new }

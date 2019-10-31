@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
+  post "/meetings/:id/:sitter_id", to: "meetings#create"
   get "/meetings/new/:sitter_id", to: "meetings#new", as: "meetings_new"
+  get "/meetings/:id/:sitter_id", to: "meetings#show", as: "meetings_show"
   resources :meetings
   
   # Devise routes. The controller basically says to refer to the registrations controller.
@@ -20,7 +22,7 @@ Rails.application.routes.draw do
   patch "/parents/:id", to: "parents#update"
   delete "/parents/:id", to: "parents#destroy"
   get "/parents/:id/edit", to: "parents#edit", as: "edit_parent"
-  get "/sitterdisplay", to: "parents#sitter_display", as: "sitter_display"
+  get "/sitterdisplay", to: "parents#sitter_display", as: "parents_sitter_display"
 
   # Sitters Routes
   get "/sitters", to: "sitters#index", as: "sitters_home"

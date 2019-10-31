@@ -30,14 +30,16 @@
     <%= form.datetime_select :end_time %>
   </div>
 
+  <div class="field">
+    <%= form.hidden_field @sitter.name %>
+    <%= form.hidden_field @sitter.description %> 
+    <%= form.hidden_field :sitter_user_id, value: @sitter.id %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
 
-  <div>
-    <%= form.hidden_field @sitter.name %>
-    <%= form.hidden_field @sitter.description %> 
-    <%= form.hidden_field @sitter.id %>
-  </div>
+
 <% end %>
 

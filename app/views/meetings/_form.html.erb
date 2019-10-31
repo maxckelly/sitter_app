@@ -11,6 +11,10 @@
     </div>
   <% end %>
 
+  <div>
+    <p> You're booking <%= @sitter.name %></p>
+  </div>
+
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
@@ -29,4 +33,11 @@
   <div class="actions">
     <%= form.submit %>
   </div>
+
+  <div>
+    <%= form.hidden_field @sitter.name %>
+    <%= form.hidden_field @sitter.description %> 
+    <%= form.hidden_field @sitter.id %>
+  </div>
 <% end %>
+

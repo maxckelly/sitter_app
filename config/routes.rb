@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get "/meetings/new/:sitter_id", to: "meetings#new", as: "meetings_new"
   resources :meetings
   
   # Devise routes. The controller basically says to refer to the registrations controller.

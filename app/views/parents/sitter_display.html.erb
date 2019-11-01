@@ -10,7 +10,7 @@
         <h5 class="card-title"><%= sitter.name %></h5>
         <p class="card-text"><%= sitter.description %></p>
         <%= link_to "View profile", sitter_path(sitter), class:"btn btn-primary" %>
-        <%= link_to "Start Booking", sitter_path(sitter), class: "btn btn-primary"%>
+        <%= link_to "Start Booking", meetings_new_path(sitter), class: "btn btn-primary"%>
       </div>
     </div>
   <% end %>

@@ -7,7 +7,9 @@ class SittersController < ApplicationController
   # GET /sitters
   # GET /sitters.json
   def index
+    
     @sitter = current_user.sitter
+    @meetings = current_user.sitter.meetings
   end
 
   # GET /sitters/1

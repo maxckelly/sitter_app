@@ -15,9 +15,18 @@
   <%= @meeting.end_time %>
 </p>
 
+<br> 
+
+<h1> Your Sitter: </h1>
+
 <p>
-  <strong> Sitter Name: </strong>
+  <strong> Name: </strong>
   <%= @sitter.name %>
+</p>
+
+<p>
+  <strong> Description: </strong>
+  <%= @sitter.description%>
 </p>
 
 <%= link_to 'Edit', edit_meeting_path(@meeting) %> |

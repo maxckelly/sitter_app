@@ -1,8 +1,9 @@
 class MeetingsController < ApplicationController
 
+
   before_action :set_meeting_view
-  before_action :set_meeting, only: [:show, :edit, :update, :destroy]
-  before_action :set_user_meeting, only: [:new, :create, :edit, :update, :destory, :show ]
+  before_action :set_meeting, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_user_meeting, only: [ :new, :create, :edit, :update, :destory, :show ]
 
   # GET /meetings
   # GET /meetings.json
@@ -15,12 +16,15 @@ class MeetingsController < ApplicationController
   # GET /meetings/1
   # GET /meetings/1.json
   def show
+    
     @sitter = Sitter.find(params[:sitter_id])
   end
 
   # GET /meetings/new
   def new
+    id = params[:id]
     @sitter = Sitter.find(params[:sitter_id])
+    @parent = Parent.find_by_user_id(current_user.id)
     @meeting = Meeting.new
   end
 
@@ -34,12 +38,14 @@ class MeetingsController < ApplicationController
 
     @meeting = Meeting.new(meeting_params)
     @meeting = current_user.meetings.new(meeting_params)
+    @meeting.parent_user = @parent
+    @parent = Parent.find(meeting_params[:parent_user_id])
     @sitter = Sitter.find(meeting_params[:sitter_user_id])
  
     respond_to do |format|
       if @meeting.save
         
-        format.html { redirect_to meetings_show_path(@meeting.id, @sitter.id), notice: 'Meeting was successfully created.' }
+        format.html { redirect_to meetings_show_path(@meeting.id, @sitter.id, @parent.id), notice: 'Meeting was successfully created.' }
         format.json { render :show, status: :created, location: @meeting }
       else
         format.html { render :new }
@@ -75,7 +81,6 @@ class MeetingsController < ApplicationController
   private
 
     def set_meeting_view
-
       if user_signed_in?
         
       else 

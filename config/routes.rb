@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  post "/meetings/:id/:sitter_id", to: "meetings#create"
+  post "/meetings/:id/:sitter_id/:parent_id", to: "meetings#create"
   get "/meetings/new/:sitter_id", to: "meetings#new", as: "meetings_new"
   get "/meetings/:id/:sitter_id", to: "meetings#show", as: "meetings_show"
   resources :meetings

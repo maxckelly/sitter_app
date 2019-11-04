@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2019_11_04_221437) do
-=======
-ActiveRecord::Schema.define(version: 2019_11_03_225121) do
->>>>>>> ab47fa797f9bd055fd3a6c4b4a86e3f0a328c06e
+ActiveRecord::Schema.define(version: 2019_11_04_224242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,10 +46,7 @@ ActiveRecord::Schema.define(version: 2019_11_03_225121) do
     t.bigint "parent_user_id"
     t.bigint "sitter_user_id"
     t.bigint "payment_id"
-<<<<<<< HEAD
     t.string "location"
-=======
->>>>>>> ab47fa797f9bd055fd3a6c4b4a86e3f0a328c06e
     t.index ["parent_user_id"], name: "index_meetings_on_parent_user_id"
     t.index ["payment_id"], name: "index_meetings_on_payment_id"
     t.index ["sitter_user_id"], name: "index_meetings_on_sitter_user_id"
@@ -74,17 +67,11 @@ ActiveRecord::Schema.define(version: 2019_11_03_225121) do
 
   create_table "payments", force: :cascade do |t|
     t.boolean "paid"
-<<<<<<< HEAD
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "meeting_id"
     t.index ["meeting_id"], name: "index_payments_on_meeting_id"
-=======
-    t.decimal "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
->>>>>>> ab47fa797f9bd055fd3a6c4b4a86e3f0a328c06e
   end
 
   create_table "roles", force: :cascade do |t|
@@ -116,6 +103,7 @@ ActiveRecord::Schema.define(version: 2019_11_03_225121) do
     t.datetime "updated_at", null: false
     t.bigint "role_id"
     t.string "stripe_uid"
+    t.string "fullname"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"

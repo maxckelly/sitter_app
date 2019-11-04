@@ -7,4 +7,7 @@ class User < ApplicationRecord
   has_one :parent
   has_one :sitter
   has_many :meetings
+
+
+  validates :fullname, presence: true, length: {maximum: 50}
 end

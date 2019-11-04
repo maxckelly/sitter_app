@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_29_031404) do
+ActiveRecord::Schema.define(version: 2019_11_04_221437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,7 +45,10 @@ ActiveRecord::Schema.define(version: 2019_10_29_031404) do
     t.bigint "user_id"
     t.bigint "parent_user_id"
     t.bigint "sitter_user_id"
+    t.bigint "payment_id"
+    t.string "location"
     t.index ["parent_user_id"], name: "index_meetings_on_parent_user_id"
+    t.index ["payment_id"], name: "index_meetings_on_payment_id"
     t.index ["sitter_user_id"], name: "index_meetings_on_sitter_user_id"
     t.index ["user_id"], name: "index_meetings_on_user_id"
   end
@@ -60,6 +63,15 @@ ActiveRecord::Schema.define(version: 2019_10_29_031404) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_parents_on_user_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.boolean "paid"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "meeting_id"
+    t.index ["meeting_id"], name: "index_payments_on_meeting_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -89,18 +101,20 @@ ActiveRecord::Schema.define(version: 2019_10_29_031404) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
     t.bigint "role_id"
+    t.string "stripe_uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "meetings", "payments"
   add_foreign_key "meetings", "users"
   add_foreign_key "meetings", "users", column: "parent_user_id"
   add_foreign_key "meetings", "users", column: "sitter_user_id"
   add_foreign_key "parents", "users"
+  add_foreign_key "payments", "meetings"
   add_foreign_key "sitters", "users"
   add_foreign_key "users", "roles"
 end

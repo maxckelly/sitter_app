@@ -1,0 +1,17 @@
+<div class="card-row">
+  <% @sitters.each do |sitter| %>
+    <div class="card" style="width: 18rem;">
+      <% if sitter.picture.attached? %>
+        <%= image_tag sitter.picture, class: "card-img-top", alt: "This is the image card" %>
+      <% else %>
+        <%= image_tag "default_profile_image.png", class: "card-img-top" %>
+      <% end %>
+      <div class="card-body">
+        <h5 class="card-title"><%= sitter.name %></h5>
+        <p class="card-text"><%= sitter.description %></p>
+        <%= link_to "View profile", sitter_path(sitter), class:"btn btn-primary" %>
+        <%= link_to "Start Booking", meetings_new_path(sitter), class: "btn btn-primary"%>
+      </div>
+    </div>
+  <% end %>
+</div>

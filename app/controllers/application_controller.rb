@@ -1,8 +1,11 @@
 class ApplicationController < ActionController::Base
 
-  
   def after_sign_in_path_for(resource)
-    parents_home_path(current_user)
+    if current_user.role_id == 1
+      parents_home_path()
+    elsif current_user.role_id == 2
+      sitters_home_path()
+    end
   end
 
   # Prevent CSRF attacks by raising an exception.
@@ -13,7 +16,6 @@ class ApplicationController < ActionController::Base
   protected
   def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:email, :password, :role_id) }
-      devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:email, :password, :current_password, :role_id) }
+      devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:email, :password, :current_password,:password_confirmation, :role_id) }
   end
-
 end

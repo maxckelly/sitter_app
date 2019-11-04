@@ -1,35 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Sitters</h1>
+<h1> Hi, <%= @sitter.name %> </h1>
+<p> Here are the jobs you have coming up </p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Email</th>
-      <th>Age</th>
-      <th>Location</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<% @meetings.each do |meeting| %>
+  <div class="card">
+    <div class="card-header">Booking</div>
+      <div class="card-body">
+        <h5 class="card-title"><%= meeting.name %></h5>
+        <p class="card-text"><%= meeting.start_time %> - <%= meeting.end_time %></p>
+        <%= link_to "View Booking", meeting_path(meeting), class: "btn btn-primary" %>
+      </div>
+  </div>
 
-  <tbody>
-    <% @sitters.each do |sitter| %>
-      <tr>
-        <td><%= sitter.name %></td>
-        <td><%= sitter.description %></td>
-        <td><%= sitter.email %></td>
-        <td><%= sitter.age %></td>
-        <td><%= sitter.location %></td>
-        <td><%= link_to 'Show', sitter %></td>
-        <td><%= link_to 'Edit', edit_sitter_path(sitter) %></td>
-        <td><%= link_to 'Destroy', sitter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
+  <% end %>
 
-<%= link_to 'New Sitter', new_sitter_path %>
+

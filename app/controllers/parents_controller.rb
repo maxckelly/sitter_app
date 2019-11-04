@@ -1,16 +1,15 @@
 class ParentsController < ApplicationController
   
   before_action :authenticate_user!
-  before_action :set_parent, only: [ :show ]
+  before_action :set_parent, only: [ :show]
   before_action :set_user_parent, only: [:show, :edit, :update, :destroy]
+  before_action :set_parent_view
 
   # GET /parents
   # GET /parents.json
   def index
-
-    @parents = current_user.parents
+    @parent = current_user.parent
     @meetings = current_user.meetings
-    
   end
 
   # GET /parents/1
@@ -21,7 +20,6 @@ class ParentsController < ApplicationController
 
   # GET /parents/new
   def new
-
     @parent = Parent.new
   end
 
@@ -32,14 +30,20 @@ class ParentsController < ApplicationController
   # POST /parents
   # POST /parents.json
   def create
+    # The below is a way to create the sitter when its a one-to-one
 
     @parent = Parent.new(parent_params)
-    @parent = current_user.parents.new(parent_params)
+    @parent.user = current_user
+    
+    respond_to do |format|
 
-    if @parent.save
-      redirect_to @parent
-    else 
-      render :new
+      if @parent.save
+        format.html { redirect_to @parent, notice: 'Parent was successfully created.' }
+        format.json { render :show, status: :created, location: @parent }
+      else
+        format.html { render :new }
+        format.json { render json: @parent.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -67,23 +71,36 @@ class ParentsController < ApplicationController
     end
   end
 
+  def sitter_display
+    # The @parent below is to grab the current user parent image for the Navbar
+    @parent = current_user.parent
+    @sitters = Sitter.all
+  end
+
   private
-    # Use callbacks to share common setup or constraints between actions.
+ 
+    # The below verifies if the current user is a parent and if so they can access all of the parents pages.
+    def set_parent_view
+
+      if current_user.role_id == 1
+        
+      else 
+        redirect_to unauthorised_path()
+      end
+    end
+
     def set_parent
       id = params[:id]
-      @parent = Parent.find(params[:id])
-
-      @parent = current_user.parents.find_by_id(id)
+      # The below is a way to find the parent when its a one-to-one
+      @parent = Parent.find_by_user_id(current_user.id)
     end
 
     def set_user_parent
       id = params[:id]
-      @parent = current_user.parents.find_by_id(id)
-
+      @parent = Parent.find_by_user_id(current_user.id)
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def parent_params
-      params.require(:parent).permit(:mother_name, :father_name, :children, :description, :location)
+      params.require(:parent).permit(:mother_name, :father_name, :children, :description, :location, :picture)
     end
 end

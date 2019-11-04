@@ -9,7 +9,7 @@
       <div class="card-body">
         <h5 class="card-title"><%= meeting.name %></h5>
         <p class="card-text"><%= meeting.start_time %> - <%= meeting.end_time %></p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <%= link_to "View Booking", meeting_path(), class: "btn btn-primary" %>
       </div>
   </div>
 

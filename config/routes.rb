@@ -33,4 +33,9 @@ Rails.application.routes.draw do
   patch "/sitters/:id", to: "sitters#update"
   delete "/sitters/:id", to: "sitters#destroy"
   get "/sitters/:id/edit", to: "sitters#edit", as: "edit_sitter"
+
+  # Payment Routes
+  post "/payments/:id/:meeting_id", to: "payments#create"
+  get "/payments/new/:meeting_id", to: "payments#new", as: "payment_new"
+  get "/payments/:id", to: "payments#show", as: "payment_show"
 end

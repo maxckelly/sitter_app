@@ -37,5 +37,5 @@ Rails.application.routes.draw do
   # Payment Routes
   post "/payments/:id/:meeting_id", to: "payments#create"
   get "/payments/new/:meeting_id", to: "payments#new", as: "payment_new"
-  get "/payments/:id", to: "payments#show", as: "payment_show"
+  get "/payments/:id/:meeting_id", to: "payments#show", as: "payment_show"
 end

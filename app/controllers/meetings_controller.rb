@@ -16,8 +16,8 @@ class MeetingsController < ApplicationController
   # GET /meetings/1
   # GET /meetings/1.json
   def show
-    
-    @sitter = Sitter.find(params[:sitter_id])
+    # @sitter = Sitter.find(params[:sitter_user_id])
+    @sitter = @meeting.sitter_user
   end
 
   # GET /meetings/new

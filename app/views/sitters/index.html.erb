@@ -3,10 +3,17 @@
 <h1> Hi, <%= @sitter.name %> </h1>
 <p> Here are the jobs you have coming up </p>
 
-<%= @meetings.name %>
-
 <% @meetings.each do |meeting| %>
-  <li><%= meeting.name %></li>
+  <div class="card">
+    <div class="card-header">Booking</div>
+      <div class="card-body">
+        <h5 class="card-title"><%= meeting.name %></h5>
+        <p class="card-text"><%= meeting.start_time %> - <%= meeting.end_time %></p>
+        <%= link_to "View Booking", meeting_path(), class: "btn btn-primary" %>
+      </div>
+  </div>
+
+
   <% end %>
 
 

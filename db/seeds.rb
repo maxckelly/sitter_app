@@ -17,14 +17,14 @@ Role.create!(
 )
 
 for i in 1..20
-  User.create!(
-    email: Faker::Internet.email,
-    password: "12345678",
-    role_id: rand(1..2),
+  u = User.new(
+    :email => Faker::Internet.email,
+    :password => '123456',
+    :role_id => rand(1..2)
   )
+  u.save!(:validate => false)
   puts "Created #{i} users"
 end
-
 
 for i in 1..10
   Sitter.create!(

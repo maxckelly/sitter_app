@@ -1,6 +1,4 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Meetings</h1>
+<h1>Bookings</h1>
 
 <table>
   <thead>
@@ -27,5 +25,8 @@
 </table>
 
 <br>
+<% if current_user.role_id == 1 %>
+  <%= link_to 'New Meeting', new_meeting_path %>
+<% elsif %>
 
-<%= link_to 'New Meeting', new_meeting_path %>
+<% end %>

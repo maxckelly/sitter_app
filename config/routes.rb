@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "/", to: "pages#index", as: "root"
   # This page appears when the user is trying to access a area of their site they're not allowed
   get "/unauthorised", to: "pages#unauthorised", as: "unauthorised"
+  get "/email_confirm", to: "pages#email_confirmed", as: "email_confirm"
 
   # Parent Routes 
   get "/parents", to: "parents#index", as: "parents_home"

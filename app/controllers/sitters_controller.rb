@@ -7,9 +7,21 @@ class SittersController < ApplicationController
   # GET /sitters
   # GET /sitters.json
   def index
+    if current_user.sitter == nil 
+      redirect_to new_sitter_path()
+    end
     
     @sitter = current_user.sitter
-    @meetings = current_user.sitter.meetings
+
+    # The below handles if there is no meeting it doesn't crash
+    if @meetings == nil
+      
+    else
+      @meetings = current_user.sitter.meetings
+    end
+    
+
+ 
   end
 
   # GET /sitters/1

@@ -7,7 +7,6 @@ class PaymentsController < ApplicationController
   end
 
   def new
-    raise
     @sitter = current_user.sitter
     @meetings = current_user.meetings
     @payment = Payment.new

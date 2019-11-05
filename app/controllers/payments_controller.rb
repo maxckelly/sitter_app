@@ -1,19 +1,20 @@
 class PaymentsController < ApplicationController
 
-  before_action :set_meeting 
+  before_action :set_meeting, only: [ :new, :show, :edit, :update, :destroy, :create ]
 
   def index
     @payment = Payment.all
   end
 
   def new
+    id = params[:id]
     @sitter = current_user.sitter
-    @meetings = current_user.meetings
+    @meetings = current_user.sitter.meetings
     @payment = Payment.new
   end
 
   def create
-    
+    @meetings = current_user.meetings
     @payment = Payment.new(payment_params)
     @sitter = current_user.sitter
     
@@ -30,7 +31,7 @@ class PaymentsController < ApplicationController
   end
 
   def show
-    @meetings = current_user.meetings
+    @meeting = current_user.meetings
 
     session = Stripe::Checkout::Session.create(
     payment_method_types: ['card'],
@@ -63,7 +64,7 @@ class PaymentsController < ApplicationController
 
   def set_meeting
     id = params[:id]
-    @meeting = Meeting.find(current_user.id)
+    @meeting = Meeting.find(current_user.sitter.meeting_ids)
   end
 
   def set_user_payment

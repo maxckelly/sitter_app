@@ -67,7 +67,7 @@ Rails.application.configure do
     port: 587,
     enable_starttls_auto: true,
     authentication: 'login',
-    user_name: 'maxckel@gmail.com',
-    password: 'RevelSafe15!'
+    user_name: ENV['gmail_address'],
+    password: ENV['gmail_password']
   }
 end

@@ -9,6 +9,7 @@ class User < ApplicationRecord
   belongs_to :role
   has_one :parent
   has_one :sitter
+  has_one_attached :picture
   has_many :meetings
 
 

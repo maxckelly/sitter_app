@@ -1,6 +1,5 @@
 class MeetingsController < ApplicationController
 
-
   before_action :set_meeting_view
   before_action :set_meeting, only: [ :show, :edit, :update, :destroy ]
   before_action :set_user_meeting, only: [ :new, :create, :edit, :update, :destory, :show ]

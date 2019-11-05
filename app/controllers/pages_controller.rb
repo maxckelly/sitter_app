@@ -10,6 +10,10 @@ class PagesController < ApplicationController
 
   end
 
+  def email_confirmed
+
+  end
+
   private 
 
     def set_user

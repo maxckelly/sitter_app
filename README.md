@@ -55,7 +55,14 @@
 
 ## Third Party Services 
 
-- Some third party services which I have within my application is Devise - A gem which allows you to create and authenticate users easily, Simple Calendar - A way to create and display meetings in a calendar, Stripe Payment system - A way to make transactions through the site, allowing the users to pay for their services. 
+- Some GEMS which I have included is:
+  1. Figaro - This allows me to secure my Google credentials used to send confirm emails: https://github.com/laserlemon/figaro 
+  2. Devise - Used for user Signup and authentication: https://github.com/plataformatec/devise 
+  3. Simple Calendar - Used to show users what bookings they have coming up in a calendar format
+  4. 
+
+- Some API's I have used:
+  1. Stripe Payment System - To send and receive payments 
 
 ## Models and Relationships
 

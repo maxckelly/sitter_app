@@ -1,10 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<h1> Hi, <%= @parent.mother_name %> and <%= @parent.father_name %></h1>
+<h1> Hi, <%= current_user.fullname %>
 
 <% if @meetings.empty? %>
-  <h1> No ngihts out planned </h1>
-  <p> If you'd like to book a baby sitter please click create booking </p>
+  <p> If you'd like to book a baby sitter please go to view sitters </p>
 <% else %>
   <h1> Here are the nights you have coming up! </h1>
   <%= month_calendar events: @meetings do |date, meetings| %>
@@ -16,11 +15,6 @@
     <% end %>
   <% end %>
 <% end %>
-
-
-
-
-<button><%= link_to "create booking", new_meeting_path() %></button>
 
 
 

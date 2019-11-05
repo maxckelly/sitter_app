@@ -8,6 +8,11 @@ class ParentsController < ApplicationController
   # GET /parents
   # GET /parents.json
   def index
+    
+    if current_user.parent == nil 
+      redirect_to parents_new_path()
+    end
+
     @parent = current_user.parent
     @meetings = current_user.meetings
   end

@@ -71,3 +71,5 @@ gem "aws-sdk-s3", "~> 1.51"
 gem "faker", "~> 2.6"
 
 gem "figaro", "~> 1.1"
+
+gem "geocoder"

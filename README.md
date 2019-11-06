@@ -59,7 +59,7 @@
   1. Figaro - This allows me to secure my Google credentials used to send confirm emails: https://github.com/laserlemon/figaro 
   2. Devise - Used for user Signup and authentication: https://github.com/plataformatec/devise 
   3. Simple Calendar - Used to show users what bookings they have coming up in a calendar format
-  4. 
+  4. GeoCoder - A way to import the longitude and latitude into Google
 
 - Some API's I have used:
   1. Stripe Payment System - To send and receive payments 

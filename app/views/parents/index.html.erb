@@ -10,12 +10,8 @@
     <%= date %>
     <% meetings.each do |meeting| %>
       <div>
-        <%= meeting.start_time %>
+        <%= meeting.name %> - <%= meeting.sitter_user.name %>
       </div>
     <% end %>
   <% end %>
 <% end %>
-
-
-
-

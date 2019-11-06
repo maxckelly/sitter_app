@@ -1,5 +1,6 @@
 .navbar {
   padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--main-grey);
 }
 
 .links {
@@ -10,7 +11,7 @@
 }
 
 .profile-image-container {
-  padding: 15px;
+  padding: 5px;
 }
 
 .profile-image-container:hover {
@@ -33,6 +34,7 @@
 
 .navbar-link:hover {
   color: var(--main-orange);
+  background: none;
 }
 
 .current {

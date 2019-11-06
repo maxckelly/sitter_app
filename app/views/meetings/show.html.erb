@@ -1,4 +1,7 @@
-<h1> Your booking </h1>
+
+<br>
+
+<h3> Your booking </h3>
 
 <p>
   <strong> Booking Name:</strong>
@@ -15,9 +18,64 @@
   <%= @meeting.end_time %>
 </p>
 
-<br> 
+<br>
+<hr>
+ 
+<h3> Location </h3>
 
-<h1> Your Sitter: </h1>
+<p> <%= @meeting.address %></p>
+<p>Coordinates: <%= @meeting.latitude %> <%= @meeting.longitude %></p>
+
+<div class="row">
+  <div class="col-md-12">
+    
+    <div id="map"></div>
+
+    <style>
+      #map {
+        width: 100%;
+        height: 400px;
+      }
+    </style>
+
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script>
+      function initialize() {
+        var mapCanvas = document.getElementById('map');
+        var mapOptions = {
+          center: new google.maps.LatLng(<%= @meeting.latitude %>, <%= @meeting.longitude %>),
+          zoom: 14,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(mapCanvas, mapOptions);
+        var marker = new google.maps.Marker({
+          position: new google.maps.LatLng(<%= @meeting.latitude %>, <%= @meeting.longitude %>),
+          map: map 
+        });
+
+        var circle = new google.maps.Circle({
+          map: map,
+          radius: 600, // this is in metres
+          fillColor: '#ff5a5f',
+          strokeColor: '#ff5a5f',
+          strokeOpacity: 1.0,
+          strokeWeight: 2
+        });
+
+        marker.setMap(null);
+        circle.bindTo('center', marker, 'position');
+  
+        
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+  </div>
+</div>
+
+<br> 
+<hr>
+
+<h3> Your Sitter </h3>
 
 <p>
   <strong> Name: </strong>
@@ -29,5 +87,9 @@
   <%= @sitter.description%>
 </p>
 
-<%= link_to 'Edit', edit_meeting_path(@meeting) %> |
+
+
+<%= link_to 'Edit', edit_meeting_path(@meeting) %>
 <%= link_to 'Back', meetings_path %>
+
+

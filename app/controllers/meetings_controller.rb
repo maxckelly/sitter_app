@@ -15,7 +15,6 @@ class MeetingsController < ApplicationController
   # GET /meetings/1
   # GET /meetings/1.json
   def show
-    # @sitter = Sitter.find(params[:sitter_user_id])
     @sitter = @meeting.sitter_user
   end
 
@@ -100,6 +99,6 @@ class MeetingsController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def meeting_params
-      params.require(:meeting).permit(:name, :start_time, :end_time, :parent_user_id, :sitter_user_id, :location)
+      params.require(:meeting).permit(:name, :start_time, :end_time, :parent_user_id, :sitter_user_id, :address)
     end
 end

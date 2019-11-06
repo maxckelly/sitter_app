@@ -2,10 +2,11 @@ class PaymentsController < ApplicationController
 
   before_action :set_meeting, only: [ :new, :show, :edit, :update, :destroy, :create ]
   before_action :set_payment, only: [ :show ]
-  before_action :set_sitter, only: [:show]
+  before_action :set_sitter, only: [ :show, :new, :edit, :update, :destroy, :create  ]
+  before_action :set_parent, only: [ :show ]
 
   def index
-    @payment = Payment.all
+    @payment = current_user.payment
   end
 
   def new
@@ -69,6 +70,10 @@ class PaymentsController < ApplicationController
 
   def set_sitter
     @sitter = current_user.sitter
+  end
+
+  def set_parent
+    @parent = current_user.parent
   end
 
   def set_payment

@@ -1,26 +1,14 @@
 <h1>Bookings</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Start time</th>
-      <th>End time</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @meetings.each do |meeting| %>
-      <tr>
-        <td><%= meeting.name %></td>
-        <td><%= meeting.start_time %></td>
-        <td><%= meeting.end_time %></td>
-        <td><%= link_to 'Show', meeting %></td>
-        <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
-        <td><%= link_to 'Destroy', meeting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% @meetings.each do |meeting| %>
+  <div class="card">
+    <div class="card-header">Booking</div>
+      <div class="card-body">
+        <h5 class="card-title"><%= meeting.name %></h5>
+        <p class="card-text"><%= meeting.start_time %> - <%= meeting.end_time %></p>
+        <%= link_to "View Booking", meeting_path(meeting), class: "btn btn-primary" %>
+        <%= link_to "Make payment", payment_show_path(meeting.payment.id, meeting.id), class: "btn btn-primary" %>
+      </div>
+  </div>
+<% end %>
 

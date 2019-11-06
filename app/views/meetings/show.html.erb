@@ -18,6 +18,26 @@
   <%= @meeting.end_time %>
 </p>
 
+
+
+<h3> Your Sitter </h3>
+
+<p>
+  <strong> Name: </strong>
+  <%= @sitter.name %>
+</p>
+
+<p>
+  <strong> Description: </strong>
+  <%= @sitter.description%>
+</p>
+
+
+
+<%= link_to 'Edit', edit_meeting_path(@meeting) %>
+<%= link_to 'Back', meetings_path %>
+
+
 <br>
 <hr>
  
@@ -25,6 +45,10 @@
 
 <p> <%= @meeting.address %></p>
 <p>Coordinates: <%= @meeting.latitude %> <%= @meeting.longitude %></p>
+
+
+
+
 
 <div class="row">
   <div class="col-md-12">
@@ -75,21 +99,6 @@
 <br> 
 <hr>
 
-<h3> Your Sitter </h3>
 
-<p>
-  <strong> Name: </strong>
-  <%= @sitter.name %>
-</p>
-
-<p>
-  <strong> Description: </strong>
-  <%= @sitter.description%>
-</p>
-
-
-
-<%= link_to 'Edit', edit_meeting_path(@meeting) %>
-<%= link_to 'Back', meetings_path %>
 
 

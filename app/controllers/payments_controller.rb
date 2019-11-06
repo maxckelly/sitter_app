@@ -12,7 +12,7 @@ class PaymentsController < ApplicationController
   def new
     id = params[:id]
     @sitter = current_user.sitter
-    @meetings = current_user.sitter.meetings
+    @meetings = current_user.meetings
     @payment = Payment.new
   end
 

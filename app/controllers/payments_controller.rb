@@ -1,6 +1,8 @@
 class PaymentsController < ApplicationController
 
   before_action :set_meeting, only: [ :new, :show, :edit, :update, :destroy, :create ]
+  before_action :set_payment, only: [ :show ]
+  before_action :set_sitter, only: [:show]
 
   def index
     @payment = Payment.all
@@ -14,14 +16,14 @@ class PaymentsController < ApplicationController
   end
 
   def create
+    
     @meetings = current_user.meetings
     @payment = Payment.new(payment_params)
     @sitter = current_user.sitter
-    
     respond_to do |format|
 
       if @payment.save
-        format.html { redirect_to @payment, notice: 'Payment was successfully created.' }
+        format.html { redirect_to payment_show_path(@payment), notice: 'Payment was successfully created.' }
         format.json { render :show, status: :created, location: @payment }
       else
         format.html { render :new }
@@ -31,8 +33,7 @@ class PaymentsController < ApplicationController
   end
 
   def show
-    @meeting = current_user.meetings
-
+    
     session = Stripe::Checkout::Session.create(
     payment_method_types: ['card'],
     customer_email: current_user.email,
@@ -63,8 +64,15 @@ class PaymentsController < ApplicationController
   private 
 
   def set_meeting
-    id = params[:id]
-    @meeting = Meeting.find(current_user.sitter.meeting_ids)
+    @meeting = Meeting.find(params[:meeting_id])
+  end
+
+  def set_sitter
+    @sitter = current_user.sitter
+  end
+
+  def set_payment
+    @payment = Payment.find(params[:id])
   end
 
   def set_user_payment
@@ -73,6 +81,6 @@ class PaymentsController < ApplicationController
   end
 
   def payment_params
-    params.permit(:price, :paid)
+    params.permit(:price, :paid, :meeting_id)
   end
 end

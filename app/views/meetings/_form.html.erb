@@ -31,6 +31,12 @@
   </div>
 
   <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+
+
+  <div class="field">
     <%= form.hidden_field @sitter.name %>
     <%= form.hidden_field @sitter.description %> 
     <%= form.hidden_field :sitter_user_id, value: @sitter.id %>
@@ -40,7 +46,6 @@
   <div class="actions">
     <%= form.submit %>
   </div>
-
 
 <% end %>
 

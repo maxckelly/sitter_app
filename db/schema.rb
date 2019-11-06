@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_11_04_111819) do
+=======
+ActiveRecord::Schema.define(version: 2019_11_05_094054) do
+>>>>>>> 36c0e25717ce661e411fa25497643985ef5a210b
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +50,9 @@ ActiveRecord::Schema.define(version: 2019_11_04_111819) do
     t.bigint "parent_user_id"
     t.bigint "sitter_user_id"
     t.bigint "payment_id"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["parent_user_id"], name: "index_meetings_on_parent_user_id"
     t.index ["payment_id"], name: "index_meetings_on_payment_id"
     t.index ["sitter_user_id"], name: "index_meetings_on_sitter_user_id"
@@ -102,6 +109,14 @@ ActiveRecord::Schema.define(version: 2019_11_04_111819) do
     t.datetime "updated_at", null: false
     t.bigint "role_id"
     t.string "stripe_uid"
+<<<<<<< HEAD
+=======
+    t.string "fullname"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+>>>>>>> 36c0e25717ce661e411fa25497643985ef5a210b
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"

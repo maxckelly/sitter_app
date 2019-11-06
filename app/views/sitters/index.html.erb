@@ -1,18 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<h1> Hi, <%= @sitter.name %> </h1>
+<h1> Hi, <%= current_user.fullname %> </h1>
 <p> Here are the jobs you have coming up </p>
 
-<% @meetings.each do |meeting| %>
-  <div class="card">
-    <div class="card-header">Booking</div>
-      <div class="card-body">
-        <h5 class="card-title"><%= meeting.name %></h5>
-        <p class="card-text"><%= meeting.start_time %> - <%= meeting.end_time %></p>
-        <%= link_to "View Booking", meeting_path(meeting), class: "btn btn-primary" %>
-        <%= link_to "Propose payment", payment_new_path(meeting), class: "btn btn-primary" %>
-      </div>
-  </div>
+<%# The below if statement handles the error if there are no meetings %>
+<% if @meetings == nil %>
+  
+<% elsif %>
+  <% @meetings.each do |meeting| %>
+    <div class="card">
+      <div class="card-header">Booking</div>
+        <div class="card-body">
+          <h5 class="card-title"><%= meeting.name %></h5>
+          <p class="card-text"><%= meeting.start_time %> - <%= meeting.end_time %></p>
+          <%= link_to "View Booking", meeting_path(), class: "btn btn-primary" %>
+        </div>
+    </div>
+  <% end %>
 <% end %>
-
 

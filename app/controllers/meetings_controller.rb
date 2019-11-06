@@ -1,6 +1,5 @@
 class MeetingsController < ApplicationController
 
-
   before_action :set_meeting_view
   before_action :set_meeting, only: [ :show, :edit, :update, :destroy ]
   before_action :set_user_meeting, only: [ :new, :create, :edit, :update, :destory, :show ]
@@ -100,6 +99,6 @@ class MeetingsController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def meeting_params
-      params.require(:meeting).permit(:name, :start_time, :end_time, :parent_user_id, :sitter_user_id)
+      params.require(:meeting).permit(:name, :start_time, :end_time, :parent_user_id, :sitter_user_id, :address)
     end
 end

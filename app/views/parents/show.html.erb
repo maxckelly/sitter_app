@@ -1,21 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <div class="view-profile-image">
-  <% if @parent.picture.attached? %>
-    <%= image_tag @parent.picture, class: "view-profile-image" %>
+  <% if @current_user.picture.attached? %>
+    <%= image_tag @current_user.picture, class: "view-profile-image" %>
   <% else %>
     <%= image_tag "default_profile_image.png", class: "view-profile-image" %>
   <% end %>
 </div>
 
 <p>
-  <strong>Mother name:</strong>
-  <%= @parent.mother_name %>
-</p>
-
-<p>
-  <strong>Father name:</strong>
-  <%= @parent.father_name %>
+  <strong>Name:</strong>
+  <%= @current_user.fullname %>
 </p>
 
 <p>

@@ -15,10 +15,6 @@
  */
 
 /* Fonts */
-
-body {
-  margin: 1rem;
-}
 @import url("https://fonts.googleapis.com/css?family=Manjari:700|Roboto:700&display=swap");
 
 :root {
@@ -38,6 +34,5 @@ a {
 
 body {
   font-family: var(--font-family-two);
+  margin: 1rem;
 }
-
-

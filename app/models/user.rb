@@ -5,7 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, 
          :confirmable
 
-
   belongs_to :role
   has_one :parent
   has_one :sitter

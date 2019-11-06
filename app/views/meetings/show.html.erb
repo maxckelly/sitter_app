@@ -1,6 +1,7 @@
 
 <br>
 
+<%# Event Details  %>
 <h3> Your booking </h3>
 
 <p>
@@ -21,6 +22,7 @@
 <br>
 <hr>
  
+<%# Location Details %>
 <h3> Location </h3>
 
 <p> <%= @meeting.address %></p>
@@ -38,7 +40,7 @@
       }
     </style>
 
-    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_KEY']}"></script>
     <script>
       function initialize() {
         var mapCanvas = document.getElementById('map');
@@ -74,6 +76,7 @@
 
 <br> 
 <hr>
+
 
 <h3> Your Sitter </h3>
 

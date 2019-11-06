@@ -43,6 +43,7 @@
   4. Ruby on Rails - v5.2.3
   5. Heroku deployment 
   6. Bootstrap
+  7. PostgreSQL 
 
 ## User Stories screenshots 
 
@@ -52,7 +53,12 @@
 ## ERD 
 
 ## High-level Components
-
+- Active Record: Active record is the transpile of SQL into Ruby.
+- Form Helpers
+- Active Storage
+- Devise
+- Stripe
+- 
 ## Third Party Services 
 
 - Some GEMS which I have included is:
@@ -65,10 +71,13 @@
   1. Stripe Payment System - To send and receive payments 
 
 ## Models and Relationships
+- TO DO: Has_many, Has_one, validations examples
 
 ## Database Relationships 
+- TO DO: Migrations, foreign keys, tables. Look at your ERD and describe it in words basically
 
 ## Database Schema Design
+- Descript the attributes and datatypes you have in your database. Eg. datetime - Back up your ERD
 
 ## Tracking of Tasks
 

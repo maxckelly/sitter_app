@@ -1,32 +1,42 @@
 <p id="notice"><%= notice %></p>
 
-<div class="view-profile-image">
+<div class="profile-div">
   <% if @current_user.picture.attached? %>
     <%= image_tag @current_user.picture, class: "view-profile-image" %>
   <% else %>
     <%= image_tag "default_profile_image.png", class: "view-profile-image" %>
   <% end %>
+
+
+  <div>
+    <p>
+      <strong>Name:</strong>
+      <%= @current_user.fullname %>
+    </p>
+  </div>
+
+  <div>
+    <p>
+      <strong>Children:</strong>
+      <%= @parent.children %>
+    </p>
+  </div>
+
+  <div>
+    <p>
+      <strong>Description:</strong>
+      <%= @parent.description %>
+    </p>
+  </div>
+
+
+  <div>
+    <p>
+      <strong>Location:</strong>
+      <%= @parent.location %>
+    </p>
+  </div>
+
 </div>
-
-<p>
-  <strong>Name:</strong>
-  <%= @current_user.fullname %>
-</p>
-
-<p>
-  <strong>Children:</strong>
-  <%= @parent.children %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @parent.description %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @parent.location %>
-</p>
-
 <%= link_to 'Edit', edit_parent_path(@parent) %> |
 <%= link_to 'Back', parents_path %>

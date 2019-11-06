@@ -1,7 +1,19 @@
 .btn {
   background: var(--main-green);
   color: white;
+  border: none;
+
+  &:visited {
+    color: var(--main-white);
+  }
+
+  &:hover {
+    background: var(--main-white);
+    color: var(--main-orange);
+    border: 1px solid var(--main-orange);
+  }
 }
+
 
 .btn-primary {
   color: white;

@@ -1,3 +1,4 @@
+<br>
 <h1>Bookings</h1>
 
 
@@ -8,6 +9,7 @@
         <h5 class="card-title"><%= meeting.name %></h5>
         <p class="card-text"><%= meeting.start_time %> - <%= meeting.end_time %></p>
         <%= link_to "View Booking", meeting_path(meeting), class: "btn btn-primary" %>
+
         <%= link_to "Make payment", payment_new_path(meeting.id, meeting.payment), class: "btn btn-primary" %>
       </div>
   </div>

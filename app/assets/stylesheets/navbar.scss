@@ -1,6 +1,9 @@
 .navbar {
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--main-grey);
+}
+
+.nav-link:hover {
+  background-color: var(--main-green);
 }
 
 .links {
@@ -19,6 +22,7 @@
 }
 
 .profile-image {
+  margin-right: 30px;
   border-radius: 50%;
   width: 3rem;
   height: 3rem;

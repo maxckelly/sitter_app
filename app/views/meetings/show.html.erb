@@ -1,4 +1,7 @@
-<h1> Your booking </h1>
+
+<br>
+
+<h3> Your booking </h3>
 
 <p>
   <strong> Booking Name:</strong>
@@ -15,19 +18,10 @@
   <%= @meeting.end_time %>
 </p>
 
-<br> 
-
-<h1> Your Sitter: </h1>
-
-<p>
-  <strong> Name: </strong>
-  <%= @sitter.name %>
-</p>
-
-<p>
-  <strong> Description: </strong>
-  <%= @sitter.description%>
-</p>
+<br>
+<hr>
+ 
+<h3> Location </h3>
 
 <p> <%= @meeting.address %></p>
 <p>Coordinates: <%= @meeting.latitude %> <%= @meeting.longitude %></p>
@@ -77,6 +71,23 @@
     </script>
   </div>
 </div>
+
+<br> 
+<hr>
+
+<h3> Your Sitter </h3>
+
+<p>
+  <strong> Name: </strong>
+  <%= @sitter.name %>
+</p>
+
+<p>
+  <strong> Description: </strong>
+  <%= @sitter.description%>
+</p>
+
+
 
 <%= link_to 'Edit', edit_meeting_path(@meeting) %>
 <%= link_to 'Back', meetings_path %>

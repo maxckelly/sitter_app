@@ -24,7 +24,8 @@
 - The functionality of the site is split into two roles. One role being the `Sitter` and the other being the `Parent`. The two users have unique views on the site and interact differently with it. The site directs the parents to create bookings and send requests to the sitters. The end result for the two users is that they agree on a price and payment is made through Stripe. The booking is then tracked by the 
 
 ### Sitemap
-- 
+
+![Trello Image Progress 1](app/assets/images/readme/siteMap.png)
 
 ### Screenshots 
 - 
@@ -58,16 +59,16 @@
 - Active Storage
 - Devise
 - Stripe
-- 
+
 ## Third Party Services 
 
 - Some GEMS which I have included is:
   1. Figaro - This allows me to secure my Google credentials used to send confirm emails: https://github.com/laserlemon/figaro 
-  2. Devise - Used for user Signup and authentication: https://github.com/plataformatec/devise 
+  2. Devise - Used for user SignUp and authentication: https://github.com/plataformatec/devise 
   3. Simple Calendar - Used to show users what bookings they have coming up in a calendar format
   4. GeoCoder - A way to import the longitude and latitude into Google
 
-- Some API's I have used:
+- Some APIs I have used:
   1. Stripe Payment System - To send and receive payments 
 
 ## Models and Relationships

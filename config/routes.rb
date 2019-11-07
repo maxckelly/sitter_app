@@ -39,4 +39,6 @@ Rails.application.routes.draw do
   post "/payments/:id/:meeting_id", to: "payments#create"
   get "/payments/new/:meeting_id", to: "payments#new", as: "payment_new"
   get "/payments/:id/:meeting_id", to: "payments#show", as: "payment_show"
+  post "/payments/webhook", to: "payments#webhook"
+  get "/payments/success", to: "payments#success", as: "payment_success"
 end

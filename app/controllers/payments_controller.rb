@@ -10,6 +10,7 @@ class PaymentsController < ApplicationController
   end
 
   def new
+    
     id = params[:id]
     @sitter = current_user.sitter
     @meetings = current_user.meetings
@@ -17,13 +18,15 @@ class PaymentsController < ApplicationController
   end
 
   def create
-    
-    @meetings = current_user.meetings
+
     @payment = Payment.new(payment_params)
-    @sitter = current_user.sitter
+
     respond_to do |format|
 
       if @payment.save
+        meeting = Meeting.find(params[:meeting_id])
+        meeting.payment_id = @payment.id
+        meeting.save
         format.html { redirect_to payment_show_path(@payment), notice: 'Payment was successfully created.' }
         format.json { render :show, status: :created, location: @payment }
       else

@@ -15,26 +15,33 @@
     <p> You're booking <%= @sitter.name %></p>
   </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="form-row">
+    <div class="col">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-control", placeholder: "10 Smith St, Melbourne, Victoria" %>
+    </div>
+
+    <div class="col">
+      <%= form.label :address %>
+      <%= form.text_field :address, class: "form-control", placeholder: "10 Smith St, Melbourne, Victoria" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :start_time %>
-    <%= form.datetime_select :start_time %>
+  <br>
+
+  <div class="form-row">
+    <div class="col">
+      <%= form.label :start_time %>
+      <%= form.datetime_select :start_time %>
+    </div>
+
+    <div class="col">
+      <%= form.label :end_time %>
+      <%= form.datetime_select :end_time %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :end_time %>
-    <%= form.datetime_select :end_time %>
-  </div>
-
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
-  </div>
-
+  <br>
 
   <div class="field">
     <%= form.hidden_field @sitter.name %>

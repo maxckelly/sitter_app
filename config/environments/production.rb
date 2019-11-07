@@ -35,7 +35,7 @@ Rails.application.configure do
   # config.action_controller.asset_host = 'http://assets.example.com'
 
 
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { :host => 'limitless-anchorage-30099.herokuapp.com' }
 
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache

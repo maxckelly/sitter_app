@@ -57,8 +57,8 @@ class PaymentsController < ApplicationController
       }
     },
     # This directs the user if the payment is successful 
-    success_url: "#{root_url}payments/success?userId=#{current_user.id}&listingId=#{@meeting.id}",
-    cancel_url: "#{root_url}listings"
+    success_url: "#{root_url}payments/success?userId=#{current_user.id}&meetingId=#{@meeting.id}",
+    cancel_url: "#{root_url}meetings"
     )
 
     # This then sets the session above to an id.

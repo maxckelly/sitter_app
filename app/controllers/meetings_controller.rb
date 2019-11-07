@@ -7,9 +7,15 @@ class MeetingsController < ApplicationController
   # GET /meetings
   # GET /meetings.json
   def index
-    @parent = current_user.parent
-    @sitter = current_user.sitter
-    @meetings = current_user.meetings
+    if current_user.sitter
+      @user = current_user.sitter
+    end
+
+    if current_user.parent
+      @user = current_user
+    end
+
+    @meetings = @user.meetings
   end
 
   # GET /meetings/1
@@ -79,9 +85,7 @@ class MeetingsController < ApplicationController
   private
 
     def set_meeting_view
-      if user_signed_in?
-        
-      else 
+      if !user_signed_in?
         redirect_to new_user_session_path()
       end
     end

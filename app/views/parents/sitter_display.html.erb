@@ -6,7 +6,7 @@
       <% else %>
         <%= image_tag "default_profile_image.png", class: "card-img-top" %>
       <% end %>
-      <div class="card-body">
+      <div class="card-body shadow">
         <h5 class="card-title"><%= sitter.name %></h5>
         <p class="card-text"><%= sitter.description %></p>
         <%= link_to "View profile", sitter_path(sitter), class:"btn btn-primary" %>

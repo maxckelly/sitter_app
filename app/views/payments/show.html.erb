@@ -1,11 +1,4 @@
-<h1> Hello </h1>
-
-
-
-<button data-stripe="payment">
-Pay Sitter <%= number_to_currency(@payment.price) %>
-</button>
-
+<%# JavaScript for the button below %>
 <script src="https://js.stripe.com/v3/"></script>
 
 <script>
@@ -21,3 +14,19 @@ Pay Sitter <%= number_to_currency(@payment.price) %>
       });
     });
 </script>
+
+<% if current_user.role_id == 1 %>
+
+  <button data-stripe="payment">
+  Pay Sitter <%= number_to_currency(@payment.price) %>
+  </button>
+
+<% elsif %>
+
+  <h3> Your payment has been sent! </h3>
+
+  
+
+
+<% end %>
+

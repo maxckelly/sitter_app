@@ -11,32 +11,45 @@
     </div>
   <% end %>
 
+  <br> 
+
   <div>
     <%= form.label :picture%>
     <%= form.file_field :picture, accept: "image/png,image/gif,image/jpg,image/jpeg"%>
   </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <br>
+
+  <div class="form-row">
+
+    <div class="col">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-control", placeholder: "John Smith" %>
+    </div>
+
+    <div class="col">
+      <%= form.label :location %>
+      <%= form.text_field :location, class: "form-control", placeholder: "Place in which you reside"%>
+    </div>
   </div>
 
-  <div class="field">
+  <br>
+
+  <div>
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, class:"form-control", placeholder: "Tell us about yourself" %>
   </div>
 
-  <div class="field">
+  <br>
+
+  <div>
     <%= form.label :age %>
-    <%= form.date_select :age %>
+    <%= form.date_select :age, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :location %>
-    <%= form.text_area :location %>
-  </div>
+  <br>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit  class: "btn btn-primary" %>
   </div>
 <% end %>

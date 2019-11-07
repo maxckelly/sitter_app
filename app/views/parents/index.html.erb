@@ -1,17 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1> Hi, <%= current_user.fullname %>
+<h3> Hi, <%= current_user.fullname %> </h3>
+<p> Here are the nights you have coming up! </p>
 
-<% if @meetings.empty? %>
-  <p> If you'd like to book a baby sitter please go to view sitters </p>
-<% else %>
-  <h1> Here are the nights you have coming up! </h1>
-  <%= month_calendar events: @meetings do |date, meetings| %>
-    <%= date %>
-    <% meetings.each do |meeting| %>
-      <div>
-        <%= meeting.name %> - <%= meeting.sitter_user.name %>
-      </div>
-    <% end %>
+<%= month_calendar events: @meetings do |date, meetings| %>
+  <%= date %>
+  <% meetings.each do |meeting| %>
+    <div>
+      <%= meeting.name %> - <%= meeting.sitter_user.name %>
+    </div>
   <% end %>
 <% end %>

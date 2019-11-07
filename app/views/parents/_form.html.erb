@@ -15,32 +15,44 @@
     <%= form.file_field :picture, accept: "image/png,image/gif,image/jpg,image/jpeg"%>
   </div>
 
-  <div class="field">
-    <%= form.label :mother_name %>
-    <%= form.text_field :mother_name %>
+  <br> 
+
+  <div class="form-row">
+    <div class="col">
+      <%= form.label :mother_name %>
+      <%= form.text_field :mother_name, class: "form-control", placeholder: "Name of the father" %>
+    </div>
+
+    <div class="col">
+      <%= form.label :father_name %>
+      <%= form.text_field :father_name, class: "form-control", placeholder: "Name of the father" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :father_name %>
-    <%= form.text_field :father_name %>
+  <br> 
+
+  <div class="form-row">
+    <div class="col">
+      <%= form.label :location %>
+      <%= form.text_field :location, class: "form-control", placeholder: "What area do you reside?" %>
+    </div>
+
+    <div class="col">
+      <%= form.label :children %>
+      <%= form.number_field :children, class: "form-control", placeholder: "How many children do you have?" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :children %>
-    <%= form.number_field :children %>
-  </div>
+  <br>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.label :description  %>
+    <%= form.text_area :description, class: "form-control",  id: "exampleFormControlTextarea1"%>
   </div>
 
-  <div class="field">
-    <%= form.label :location %>
-    <%= form.text_area :location %>
-  </div>
-
+  <br> 
+  
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit  class: "btn btn-primary"%>
   </div>
 <% end %>

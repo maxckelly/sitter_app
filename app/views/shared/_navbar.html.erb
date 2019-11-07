@@ -53,34 +53,56 @@
             <%= image_tag "default_profile_image.png", class: "profile-image" %>
           <% end %>
         </div>
-        <%= link_to "Home", sitters_home_path(), class: "navbar-link" %>
-        <%= link_to "All bookings", meetings_path(), class: "navbar-link" %>
-        
-        <% if current_user.sitter == nil %>
-          <%= link_to "Create Sitter", new_sitter_path(), class: "navbar-link" %>
-        <% elsif %>
-          <%= link_to "View profile", sitter_path(@sitter), class: "navbar-link" %>
-        <% end %>
+        <ul class="nav nav-tabs">
+          <li class="navbar-item">
+            <%= link_to "Home", sitters_home_path(), class: "nav-link" %>
+          </li>
+          <li class="navbar-item">
+            <%= link_to "All bookings", meetings_path(), class: "nav-link" %>
+          </li>
+          
+          <% if current_user.sitter == nil %>
+            <li class="navbar-item">
+              <%= link_to "Create Sitter", new_sitter_path(), class: "nav-link" %>
+            </li>
+          <% elsif %>
+            <li class="navbar-item">
+              <%= link_to "View profile", sitter_path(@sitter), class: "nav-link" %>
+            </li>
+          <% end %>
 
-        <% if user_signed_in? %>
-          <%= link_to "logout", destroy_user_session_path, method: :delete, class: "navbar-link"%></p>
-        <% else %>
-          <%= link_to "login", new_user_session_path, class: "navbar-link"%>
-        <% end %>
+          <% if user_signed_in? %>
+            <li class="navbar-item">
+              <%= link_to "logout", destroy_user_session_path, method: :delete, class: "nav-link"%></p>
+            </li>
+          <% else %>
+            <li class="navbar-item">
+              <%= link_to "login", new_user_session_path, class: "nav-link"%>
+            </li>
+          <% end %>
+        </ul>
       </div>
     </nav>
   <% elsif !user_signed_in? %>
     <nav class="navbar">
       <div class="links">
         <div class="profile-image-container">
-          <%= image_tag 'default_profile_image.png', class: "profile-image"%>
+          <%= image_tag 'baby-1.png', class: "profile-image"%>
         </div>
-        <%= link_to "Home", root_path(), class: "navbar-link" %>
-        <% if user_signed_in? %>
-          <%= link_to "logout", destroy_user_session_path, method: :delete, class: "navbar-link"%></p>
-        <% else %>
-          <%= link_to "login", new_user_session_path, class: "navbar-link"%>
-        <% end %>
+        <ul class="nav nav-tabs">
+          <li class="navbar-item">
+            <%= link_to "Home", root_path(), class: "nav-link active" %>
+          </li>
+          <% if user_signed_in? %>
+            <li class="navbar-item">
+              <%= link_to "logout", destroy_user_session_path, method: :delete, class: "nav-link"%></p>
+            </li>
+          <% else %>
+            <li class="navbar-item">
+              <%= link_to "login", new_user_session_path, class: "nav-link"%>
+            </li>
+          <% end %>
+        </ul>
       </div>
     </nav>
 <% end %>

@@ -1,16 +1,19 @@
 class PaymentsController < ApplicationController
 
-  before_action :set_meeting, only: [ :new, :show, :edit, :update, :destroy, :create ]
+  before_action :set_meeting, only: [ :new, :show, :edit, :update, :destroy, :create, :success ]
   before_action :set_payment, only: [ :show ]
-  before_action :set_sitter, only: [ :show, :new, :edit, :update, :destroy, :create  ]
-  before_action :set_parent, only: [ :show ]
+  before_action :set_sitter, only: [ :show, :new, :edit, :update, :destroy, :create, :success  ]
+  before_action :set_parent, only: [ :show, :success ]
 
   def index
     @payment = current_user.payment
   end
 
+  def success 
+
+  end
+
   def new
-    
     id = params[:id]
     @sitter = current_user.sitter
     @meetings = current_user.meetings
@@ -36,8 +39,23 @@ class PaymentsController < ApplicationController
     end
   end
 
-  def show
+  def webhook 
+    payment_id = params[:data][:object][:payment_intent]
+    payment = Stripe::PaymentIntent.retrieve(payment_id)
+
+
+    # This is getting the metadata that we have in listings_controller.rb and the show method.
+    meeting_id = payment.metadata.meeting_id
+    user_id = payment.metadata.user_id
+
+    p "meeting id = " + meeting_id
+    p "user id = " + user_id
     
+    status 200
+  end
+
+  def show
+
     session = Stripe::Checkout::Session.create(
     payment_method_types: ['card'],
     customer_email: current_user.email,
@@ -57,7 +75,7 @@ class PaymentsController < ApplicationController
       }
     },
     # This directs the user if the payment is successful 
-    success_url: "#{root_url}payments/success?userId=#{current_user.id}&meetingId=#{@meeting.id}",
+    success_url: "#{root_url}payments/success?user_id=#{current_user.id}&meeting_id=#{@meeting.id}",
     cancel_url: "#{root_url}meetings"
     )
 
@@ -70,6 +88,11 @@ class PaymentsController < ApplicationController
   def set_meeting
     @meeting = Meeting.find(params[:meeting_id])
   end
+
+  def set_user
+    @current_user = User.find_by_user_id(params[:user_id])
+  end
+
 
   def set_sitter
     @sitter = current_user.sitter

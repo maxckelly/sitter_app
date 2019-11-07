@@ -55,7 +55,7 @@
         </div>
         <ul class="nav nav-tabs">
           <li class="navbar-item">
-            <%= link_to "Home", sitters_home_path(), class: "nav-link" %>
+            <%= link_to "Home", sitters_home_path(), class: " active nav-link" %>
           </li>
           <li class="navbar-item">
             <%= link_to "All bookings", meetings_path(), class: "nav-link" %>
@@ -67,7 +67,7 @@
             </li>
           <% elsif %>
             <li class="navbar-item">
-              <%= link_to "View profile", sitter_path(@sitter), class: "nav-link" %>
+              <%= link_to "View profile", sitter_path(current_user.sitter), class: "nav-link" %>
             </li>
           <% end %>
 

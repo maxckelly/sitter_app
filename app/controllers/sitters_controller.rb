@@ -53,7 +53,7 @@ class SittersController < ApplicationController
     
     respond_to do |format|
       if @sitter.save
-        format.html { redirect_to @sitter, notice: 'Racquet was successfully created.' }
+        format.html { redirect_to @sitter, notice: 'Sitter was successfully created.' }
         format.json { render :show, status: :created, location: @sitter }
       else
         format.html { render :new }

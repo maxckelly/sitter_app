@@ -19,9 +19,6 @@ class SittersController < ApplicationController
     else
       @meetings = current_user.sitter.meetings
     end
-    
-
- 
   end
 
   # GET /sitters/1
@@ -32,6 +29,9 @@ class SittersController < ApplicationController
     elsif current_user.role_id == 1
       @parent = current_user.parent
     end
+
+    @sitter = Sitter.new(sitter_params)
+    @sitter.user = current_user
   end
 
   # GET /sitters/new

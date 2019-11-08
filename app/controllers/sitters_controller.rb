@@ -30,7 +30,7 @@ class SittersController < ApplicationController
       @parent = current_user.parent
     end
 
-    @sitter = Sitter.new(sitter_params)
+    # @sitter = Sitter.new(sitter_params)
     @sitter.user = current_user
   end
 

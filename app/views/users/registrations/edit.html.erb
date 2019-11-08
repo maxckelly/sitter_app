@@ -43,6 +43,67 @@
   </div>
 <% end %>
 
+<div class="panel panel-default">
+  <div class="panel-heading"> Your phone number </div>
+  <div class="panel-body">
+    <div class="container">
+      <% if !current_user.phone_number.blank? || current_user.phone_number == nil %>
+        <h4> <%= current_user.phone_number %> </h4>
+        <button class="btn btn-default" data-toggle="modal" data-target="#update-phone">Update Phone Number </button>
+        <% if current_user.phone_verified == false %>
+          <button class="btn btn-default" data-toggle="modal" data-target="#verify-phone">Update</button>
+        <% end %>
+      <% else %>
+        <button class="btn btn-default" data-toggle="modal" data-targe="#update-phone">Add Phone number</button>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%# Modal for Phone Number %>
+<div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="model-header">
+        <button class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Update Phone number </h4>
+      </div>
+
+      <div class="modal-body">
+        <%= form_for current_user, url: update_phone_number_users_path(current_user) do |f| %>
+          <div class="form-group"> 
+            <%= f.phone_field :phone_number, class: "form-control", placeholder: "Your phone number"%>
+          </div>
+          <div class="text-center">
+            <%= f.submit "Save", class: "btn btn-normal" %>
+          </div>  
+        <% end %>
+      </div>
+    </div>
+</div>
+
+<%# Modal For Verify Phone Number %>
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="model-header">
+        <button class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Verification Code </h4>
+      </div>
+
+      <div class="modal-body">
+        <%= form_for current_user, url: verify_phone_number_users_path(current_user), method: :post do |f| %>
+          <div class="form-group"> 
+            <%= f.phone_field :phone_number, class: "form-control", placeholder: "Your PIN"%>
+          </div>
+          <div class="text-center">
+            <%= f.submit "Verfiy", value: "", class: "btn btn-normal" %>
+          </div>  
+        <% end %>
+      </div>
+    </div>
+  </div>
+
 <h3>Cancel my account</h3>
 
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>

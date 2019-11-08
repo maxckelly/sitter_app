@@ -8,6 +8,14 @@ Rails.application.routes.draw do
   # Devise routes. The controller basically says to refer to the registrations controller.
   devise_for :users, controllers: { registrations: "registrations" }
 
+  #  The below is for mobile verification
+  resource :users, only: [ :show ] do
+    member do
+      post '/verify_phone_number' => 'users#verify_phone_number'
+      patch '/update_phone_number' => 'user#update_phone_number'
+    end
+  end
+
   # Pages Routes
   get "/", to: "pages#index", as: "root"
   # This page appears when the user is trying to access a area of their site they're not allowed

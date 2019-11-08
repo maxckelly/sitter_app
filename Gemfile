@@ -75,3 +75,5 @@ gem "stripe", "~> 5.7"
 gem "figaro", "~> 1.1"
 
 gem "geocoder"
+
+gem 'twilio-ruby'

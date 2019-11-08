@@ -83,7 +83,7 @@ class ParentsController < ApplicationController
   end
 
   private
- 
+
     # The below verifies if the current user is a parent and if so they can access all of the parents pages.
     def set_parent_view
 
@@ -106,6 +106,6 @@ class ParentsController < ApplicationController
     end
 
     def parent_params
-      params.require(:parent).permit(:mother_name, :father_name, :children, :description, :location, :picture)
+      params.require(:parent).permit(:mother_name, :father_name, :children, :description, :location, :picture, )
     end
 end

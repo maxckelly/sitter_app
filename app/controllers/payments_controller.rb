@@ -93,9 +93,8 @@ class PaymentsController < ApplicationController
     @current_user = User.find_by_user_id(params[:user_id])
   end
 
-
   def set_sitter
-    @sitter = current_user.sitter
+    @sitter = Sitter.find_by_user_id(current_user.id)
   end
 
   def set_parent

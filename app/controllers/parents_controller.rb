@@ -1,7 +1,7 @@
 class ParentsController < ApplicationController
   
   before_action :authenticate_user!
-  before_action :set_parent, only: [ :show]
+  before_action :set_parent, only: [ :show ]
   before_action :set_user_parent, only: [:show, :edit, :update, :destroy]
   before_action :set_parent_view
 

@@ -1,0 +1,7 @@
+  <h1> <%= "Success! Thank you #{current_user.email} for your payment" %></h1>
+
+  <div>
+    <p><%= @meeting.name %></p>
+    <p><%= @meeting.payment.price %></p>
+    <p> <%= "The total payment of #{@meeting.payment.price} is due in the next 30 Days" %></p>
+  </div>

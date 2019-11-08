@@ -9,7 +9,7 @@
 - It is a problem that needs solving as a large amount of parents find it hard to find a reliable and experienced babysitter for an affordable price. On-top of that parents sometimes face cancellation, babysitters calling in sick and more. Thus effecting their plans. We solve this issue by providing a platform where they can quickly and easily book the 'sitters' in an uber like way. 
 
 ## URL Link
-- 
+- https://sitterapp.herokuapp.com/ 
 ## Github Link
 
 - https://github.com/maxckelly/sitter_app
@@ -28,7 +28,10 @@
 ![Trello Image Progress 1](app/assets/images/readme/siteMap.png)
 
 ### Screenshots 
-- 
+![Site Image Progress 1](app/assets/images/readme/01_site_screenshot.png)
+![Site Image Progress 2](app/assets/images/readme/02_site_screenshot.png)
+![Site Image Progress 3](app/assets/images/readme/03_site_screenshot.png)
+![Site Image Progress 4](app/assets/images/readme/04_site_screenshot.png)
 
 ### Target Audience
 
@@ -51,8 +54,30 @@
 
 ## Wire Frames 
 
-## ERD 
+![Sketch Image Progress 1](app/assets/images/readme/01_sketch.png)
+![Sketch Image Progress 1](app/assets/images/readme/02_sketch.png)
+![Sketch Image Progress 1](app/assets/images/readme/03_sketch.png)
+![Sketch Image Progress 1](app/assets/images/readme/04_sketch.png)
+![Sketch Image Progress 1](app/assets/images/readme/05_sketch.png)
+![Sketch Image Progress 1](app/assets/images/readme/06_sketch.png)
+![Sketch Image Progress 1](app/assets/images/readme/07_sketch.png)
+![Sketch Image Progress 1](app/assets/images/readme/08_sketch.png)
+![Sketch Image Progress 1](app/assets/images/readme/09_sketch.png)
+![Sketch Image Progress 1](app/assets/images/readme/10_sketch.png)
 
+![Trello Image Progress 1](app/assets/images/readme/Desktop.png)
+![Trello Image Progress 2](app/assets/images/readme/parentHome.png)
+![Trello Image Progress 3](app/assets/images/readme/signup.png)
+![Trello Image Progress 4](app/assets/images/readme/profile.png)
+![Trello Image Progress 5](app/assets/images/readme/bookings.png)
+![Trello Image Progress 6](app/assets/images/readme/viewSitters.png)
+
+![Mobile Image Progress 1](app/assets/images/readme/bookingsMOBILE.png)
+![Mobile Image Progress 1](app/assets/images/readme/presignup:loginMOBILE.png)
+![Mobile Image Progress 1](app/assets/images/readme/profileMOBILE.png)
+
+## ERD 
+![ERD](app/assets/images/readme/ERD.png)
 ## High-level Components
 - Active Record: Active record is the transpile of SQL into Ruby.
 - Form Helpers
@@ -93,6 +118,7 @@
 ![Trello Image Progress 6](app/assets/images/readme/06_trello_image.png)
 ![Trello Image Progress 7](app/assets/images/readme/07_trello_image.png)
 ![Trello Image Progress 8](app/assets/images/readme/08_trello_image.png)
+![Trello Image Progress 9](app/assets/images/readme/09_trello_image.png)
 ![Github Issue Tracker Image Progress 1](app/assets/images/readme/01_github_issue_tracker.png)
 
 

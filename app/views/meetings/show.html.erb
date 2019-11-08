@@ -18,7 +18,7 @@
   <%= @meeting.end_time %>
 </p>
 
-
+<hr>
 
 <h3> Your Sitter </h3>
 
@@ -32,23 +32,16 @@
   <%= @sitter.description%>
 </p>
 
+<p>
+  <strong> Age: </strong>
+  <%= @sitter.age%>
+</p>
 
-
-<%= link_to 'Edit', edit_meeting_path(@meeting) %>
-<%= link_to 'Back', meetings_path %>
-
-
-<br>
 <hr>
  
 <h3> Location </h3>
 
 <p> <%= @meeting.address %></p>
-<p>Coordinates: <%= @meeting.latitude %> <%= @meeting.longitude %></p>
-
-
-
-
 
 <div class="row">
   <div class="col-md-12">
@@ -63,6 +56,11 @@
     </style>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=<%=Rails.application.credentials.google_maps_api_keys%>&callback=initMap"></script>
+
+  <br>
+  <%= link_to 'Edit', edit_meeting_path(@meeting) %>
+  <%= link_to 'Back', meetings_path %>
+
     <script>
       function initialize() {
         var mapCanvas = document.getElementById('map');
@@ -98,7 +96,6 @@
 
 <br> 
 <hr>
-
 
 
 

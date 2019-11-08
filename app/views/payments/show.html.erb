@@ -15,11 +15,11 @@
     });
 </script>
 
-<h3> Payment </h3>
-<p> Please make the below payment to complete the booking </p>
-
 <%#  The below only displays the button to the parent.  %>
 <% if current_user.role_id == 1 %>
+
+  <h3> Payment </h3>
+  <p> Please make the below payment to complete the booking </p>
 
   <button data-stripe="payment" class="btn btn-primary">
   Pay Sitter <%= number_to_currency(@payment.price) %>

@@ -49,7 +49,10 @@
   6. Bootstrap
   7. PostgreSQL 
 
-## User Stories screenshots 
+## User Stories 
+- Our mother Alice is a mother of three children who works full-time along with her husband. Managing work and her social life Alice needs to find an affordable and trust worth platform that can provide her with quality and trained baby sitters. Alice wants to know that when she needs a baby sitter to look after her children she can quickly jump on Sitter and organise it in a short time frame. Alice wants to be able to view and see the closest and best rated baby sitters in her area, along with detailed profiles so she can do her own background check to ensure the baby sitter she is selecting is the right choice. Alice would go onto sitter and select the sitter she wishes to hire. This would then lead to the creation of a booking. Once the booking has been made then the sitter will send back a payment which the sitter needs to pay to complete.
+
+- Our baby sitter Kara is a female full time uni student without a job but experience of looking after children. Kara wants a platform which she can go online and be hired to baby sit. She wants the ease of doing this in her own time and have it as a way to earn a little bit of money while studying. When Kara receives a booking from Alice she will be able to see the time, place and duration in which she has to work. Once Kara is happy with the booking and wishes to accept the job she will then send back a proposed payment to Alice. This will be the total fee in which she is charging for the night. Once the payment has been made by Alice then the booking is then complete.
 
 
 ## Wire Frames 
@@ -100,6 +103,7 @@
 ## Models and Relationships
 - `Meeting Model.rb`
   - The meeting model has two main relationships 1. The user table and 2. payment table. As well as this it has the geocoder gem which says grabs the address column and reverses the input in to latitude and longitude.
+  - Each meeting however can only have one payment.
 - `Parent Model.rb`
   - The parent model belongs to the user and has a validation of mother_name and father_name
 - `Payment Model.rb`
@@ -120,6 +124,14 @@
 
 ## Database Relationships 
 - TO DO: Migrations, foreign keys, tables. Look at your ERD and describe it in words basically
+- The aim of my database was to keep it simple and 'clean' to avoid confusion and unnecessary fields. First we have the role table, this collects assigns each user with a role in the site, it has one column that is a string, each role has one user. The next table is user's which collects the basic information from the users such as email, password, name and photo this has a foreign key of the role_id. Each user can then create one sitter or parent. From there we have the parents and sitter table, this is linked to the user table when created and has datatypes such as text, integer and datetime. Each sitter and parent can have many meetings which is the next table. The meeting takes the user id from the user as well as the payment_id from the payments table. Each user can have many meetings but each meeting can have only one payment. Finally the payment table has the foreign key of meeting_id. Below is a clear example of each foreign key and how the database relationships work within the Sitter app.
+
+  foreign key "meetings", is added to"payments"
+  foreign key "meetings", is added to "users"
+  foreign key "parents", is added to "users"
+  foreign key "payments", is added to "meetings"
+  foreign key "sitters", is added to "users"
+  foreign key "users", is added to "roles"
 
 ## Database Schema Design
 - Through out the sitter app I have included a number of data types. My most common one being datetime. This is due to the fact a lot of the bookings and capturing of data requires a date time. 
@@ -135,7 +147,12 @@
   - Next we have two `text` fields for fields which require a lot more information such as description and location.
   - We also have the `integer` data type which collects the amount of children the family has along with the `datetime` to store the created_at and updated_at data. 
   - The user_id is also a foreign key which is links the parent to a user. 
-- `
+- `Sitters`
+  - The sitter table has the following columns: name, description, age, location, created_at, updated_at. The table contains strings, text and datetime. 
+- `Meetings`
+  - The meetings table consists of strings, datetime, user id, payment id as well as floats. The floats are assigned to latitude and longitude which is used to assists the Google Maps API of displaying the location of the booking. The datetime is used with the start time and end times of the bookings and the strings are used to collect the name and address of the booking. 
+- `Payments`
+  - The payments table consists of a boolean, integer and datetimes. The boolean is used to help mark if the payment has been paid or not while the integer is used to set the price of the payment.
 
 ## Tracking of Tasks
 
